@@ -5,7 +5,7 @@ import java.awt.event.*;
 public class GridTest extends JFrame {
     private boolean XorO=true;
     //true is x false is o
-   final  private  String[][] ary= new String[3][3];
+    private  String[][] ary= new String[3][3];
     private Container pane1;
     public GridTest(){
         this.setTitle("Tic Tac Toe");
