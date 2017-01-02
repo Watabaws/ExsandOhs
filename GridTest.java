@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;//NEW STUFF!
 import java.awt.event.*;
-
+import java.util.Arrays; 
 public class GridTest extends JFrame {
     private boolean XorO = true;
     //true is x false is o
@@ -20,136 +20,143 @@ public class GridTest extends JFrame {
         UL.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent event){
-                if(XorO){
-                    UL.setText("X");
-                    valUs[0][0] = "X";
-                }
-                else{
-                    UL.setText("O");
-                    valUs[0][0] = "O";
-                }
-                XorO = !XorO;
-            }
+		if (UL.getText().equals("-")){
+		    if(XorO){
+			UL.setText("X");
+			valUs[0][0] = "X";
+		    }
+		    else{
+			UL.setText("O");
+			valUs[0][0] = "O";
+		    }
+		    XorO = !XorO;
+		}}
         });
 
         JButton UC = new JButton("-");
         UC.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                if(XorO){
-                    UC.setText("X");
-                    valUs[0][1] = "X";
-                }
-                else{
-                    UC.setText("O");
-                    valUs[0][1] = "O";
-                }
-                XorO = !XorO;
-            }
+            public void actionPerformed(ActionEvent event){
+		if (UC.getText().equals("-")){
+		    if(XorO){
+			UC.setText("X");
+			valUs[0][0] = "X";
+		    }
+		    else{
+			UC.setText("O");
+			valUs[0][0] = "O";
+		    }
+		    XorO = !XorO;
+		}}
         });
 
         JButton UR = new JButton("-");
         UR.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                if(XorO){
-                    UR.setText("X");
-                    valUs[0][2] = "X";
-                }
-                else{
-                    UR.setText("O");
-                    valUs[0][2] = "O";
-                }
-                XorO = !XorO;
-            }
+            public void actionPerformed(ActionEvent event){
+		if (UR.getText().equals("-")){
+		    if(XorO){
+			UR.setText("X");
+			valUs[0][0] = "X";
+		    }
+		    else{
+			UR.setText("O");
+			valUs[0][0] = "O";
+		    }
+		    XorO = !XorO;
+		}}
         });
 
         JButton ML = new JButton("-");
         ML.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                if(XorO){
-                    ML.setText("X");
-                    valUs[1][0] = "X";
-                }
-                else{
-                    ML.setText("O");
-                    valUs[1][0] = "O";
-                }
-                XorO = !XorO;
-            }
+            public void actionPerformed(ActionEvent event){
+		if (ML.getText().equals("-")){
+		    if(XorO){
+			ML.setText("X");
+			valUs[0][0] = "X";
+		    }
+		    else{
+			ML.setText("O");
+			valUs[0][0] = "O";
+		    }
+		    XorO = !XorO;
+		}}
         });
 
         JButton MC = new JButton("-");
         MC.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                if(XorO){
-                    MC.setText("X");
-                    valUs[1][1] = "X";
-                }
-                else{
-                    MC.setText("O");
-                    valUs[1][1] = "O";
-                }
-                XorO = !XorO;
-            }
+            public void actionPerformed(ActionEvent event){
+		if (MC.getText().equals("-")){
+		    if(XorO){
+			MC.setText("X");
+			valUs[0][0] = "X";
+		    }
+		    else{
+			MC.setText("O");
+			valUs[0][0] = "O";
+		    }
+		    XorO = !XorO;
+		}}
         });
-
         JButton MR = new JButton("-");
-        MR.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                if(XorO){
-                    MR.setText("X");
-                    valUs[1][2] = "X";
-                }
-                else{
-                    MR.setText("O");
-                    valUs[1][2] = "O";
-                }
-                XorO = !XorO;
-            }
+        MR.addActionListener(new ActionListener() {	
+            public void actionPerformed(ActionEvent event){
+		if (MR.getText().equals("-")){
+		    if(XorO){
+			MR.setText("X");
+			valUs[0][0] = "X";
+		    }
+		    else{
+			MR.setText("O");
+			valUs[0][0] = "O";
+		    }
+		    XorO = !XorO;
+		}}
         });
 
         JButton BL = new JButton("-");
         BL.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                if(XorO){
-                    BL.setText("X");
-                    valUs[2][0] = "X";
-                }
-                else{
-                    BL.setText("O");
-                    valUs[2][0] = "O";
-                }
-                XorO = !XorO;
-            }
+	     public void actionPerformed(ActionEvent event){
+		if (BL.getText().equals("-")){
+		    if(XorO){
+			BL.setText("X");
+			valUs[0][0] = "X";
+		    }
+		    else{
+		       BL.setText("O");
+			valUs[0][0] = "O";
+		    }
+		    XorO = !XorO;
+		}}
         });
-
         JButton BC = new JButton("-");
         BC.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                if(XorO){
-                    BC.setText("X");
-                    valUs[2][1] = "X";
-                }
-                else{
-                    BC.setText("O");
-                    valUs[2][1] = "O";
-                }
-                XorO = !XorO;
-            }
+            public void actionPerformed(ActionEvent event){
+		if (BC.getText().equals("-")){
+		    if(XorO){
+			BC.setText("X");
+			valUs[0][0] = "X";
+		    }
+		    else{
+		        BC.setText("O");
+			valUs[0][0] = "O";
+		    }
+		    XorO = !XorO;
+		}}
         });
 
         JButton BR = new JButton("-");
         BR.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                if(XorO){
-                    BR.setText("X");
-                    valUs[2][2] = "X";
-                }
-                else{
-                    BR.setText("O");
-                    valUs[2][2] = "O";
-                }
-                XorO = !XorO;
-            }
+            public void actionPerformed(ActionEvent event){
+		if (BR.getText().equals("-")){
+		    if(XorO){
+			BR.setText("X");
+			valUs[0][0] = "X";
+		    }
+		    else{
+			BR.setText("O");
+			valUs[0][0] = "O";
+		    }
+		    XorO = !XorO;
+		}}
         });
 
 
@@ -162,7 +169,7 @@ public class GridTest extends JFrame {
         pane1.add(BL);
         pane1.add(BC);
         pane1.add(BR);
-    }
+	    }
 
     public static void main(String[] args){
         GridTest g = new GridTest();
