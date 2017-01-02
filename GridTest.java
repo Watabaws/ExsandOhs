@@ -17,7 +17,6 @@ public class GridTest extends JFrame {
 
 
         JButton UL = new JButton("-");
-        UL.addActionListener(this);
         UL.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent event){
@@ -31,10 +30,9 @@ public class GridTest extends JFrame {
                 }
                 XorO = !XorO;
             }
-        }
+        });
 
         JButton UC = new JButton("-");
-        UC.addActionListener(this);
         UC.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 if(XorO){
@@ -47,10 +45,9 @@ public class GridTest extends JFrame {
                 }
                 XorO = !XorO;
             }
-        }
+        });
 
         JButton UR = new JButton("-");
-        UR.addActionListener(this);
         UR.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 if(XorO){
@@ -63,10 +60,9 @@ public class GridTest extends JFrame {
                 }
                 XorO = !XorO;
             }
-        }
+        });
 
         JButton ML = new JButton("-");
-        ML.addActionListener(this);
         ML.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 if(XorO){
@@ -79,10 +75,9 @@ public class GridTest extends JFrame {
                 }
                 XorO = !XorO;
             }
-        }
+        });
 
         JButton MC = new JButton("-");
-        MC.addActionListener(this);
         MC.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 if(XorO){
@@ -95,10 +90,9 @@ public class GridTest extends JFrame {
                 }
                 XorO = !XorO;
             }
-        }
+        });
 
         JButton MR = new JButton("-");
-        MR.addActionListener(this);
         MR.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 if(XorO){
@@ -111,10 +105,9 @@ public class GridTest extends JFrame {
                 }
                 XorO = !XorO;
             }
-        }
+        });
 
         JButton BL = new JButton("-");
-        BL.addActionListener(this);
         BL.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 if(XorO){
@@ -127,10 +120,9 @@ public class GridTest extends JFrame {
                 }
                 XorO = !XorO;
             }
-        }
+        });
 
         JButton BC = new JButton("-");
-        BC.addActionListener(this);
         BC.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 if(XorO){
@@ -143,10 +135,9 @@ public class GridTest extends JFrame {
                 }
                 XorO = !XorO;
             }
-        }
+        });
 
         JButton BR = new JButton("-");
-        BR.addActionListener(this);
         BR.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 if(XorO){
@@ -159,7 +150,7 @@ public class GridTest extends JFrame {
                 }
                 XorO = !XorO;
             }
-        }
+        });
 
 
         pane1.add(UL);
