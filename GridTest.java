@@ -3,9 +3,10 @@ import java.awt.*;//NEW STUFF!
 import java.awt.event.*;
 
 public class GridTest extends JFrame{
+    private boolean XorO=true;
+    //true is x false is o
+    
     private Container pane1;
-    private JPanel pane2;
-
     public GridTest(){
         this.setTitle("Tic Tac Toe");
         this.setSize(1000,1000);
@@ -13,29 +14,30 @@ public class GridTest extends JFrame{
 
         pane1 = this.getContentPane();
         pane1.setLayout(new GridLayout(3,3));
-        pane2 = new JPanel(new GridLayout(3,3));
-        pane1.add(new JButton("1"));
-        pane1.add(new JButton("2"));
-        pane1.add(new JButton("3"));
-        pane1.add(new JButton("4"));
-        pane1.add(pane2);
-        pane1.add(new JButton("6"));
-        pane1.add(new JButton("7"));
-        pane1.add(new JButton("8"));
-        pane1.add(new JButton("9"));
-        pane2.add(new JButton("1"));
-        pane2.add(new JButton("2"));
-        pane2.add(new JButton("3"));
-        pane2.add(new JButton("4"));
-        pane2.add(new JButton("5"));
-        pane2.add(new JButton("6"));
-        pane2.add(new JButton("7"));
-        pane2.add(new JButton("8"));
-        pane2.add(new JButton("9"));
-    }
+	for (int row = 0; row < 3; row++)
+    {
+        for (int col = 0; col < 3; col++)
+        {
+            JButton b = new JButton();
+            b.addActionListener(new ActionListener()
+            {
+                public void actionPerformed(ActionEvent e)
+                {
+		    if (XorO){
+			b.setText("X");}
+		    else{
+			b.setText("O");}
+		    XorO=!XorO;
+                }
+            });
+            pane1.add(b);
+        }
+    }}
 
     public static void main(String[] args){
         GridTest g = new GridTest();
         g.setVisible(true);
     }
+
+	
 }
