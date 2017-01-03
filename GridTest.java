@@ -6,17 +6,17 @@ public class GridTest extends JFrame {
     private boolean XorO = true;
     //true is x false is o
     private  String[][] valUs= new String[3][3];
-    private Container pane1;
+    private JPanel  pane1,overall;
     public GridTest(){
         this.setTitle("Tic Tac Toe");
         this.setSize(1000,1000);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        pane1 = this.getContentPane();
-        pane1.setLayout(new GridLayout(3,3));
+       
+        pane1 = new JPanel(new GridLayout(3,3));
+	overall = new JPanel(new CardLayout());
 
-
-        JButton UL = new JButton("-");
+        final JButton UL = new JButton("-");
         UL.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent event){
@@ -33,7 +33,7 @@ public class GridTest extends JFrame {
 		}}
         });
 
-        JButton UC = new JButton("-");
+        final JButton UC = new JButton("-");
         UC.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event){
 		if (UC.getText().equals("-")){
@@ -49,7 +49,7 @@ public class GridTest extends JFrame {
 		}}
         });
 
-        JButton UR = new JButton("-");
+        final JButton UR = new JButton("-");
         UR.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event){
 		if (UR.getText().equals("-")){
@@ -65,7 +65,7 @@ public class GridTest extends JFrame {
 		}}
         });
 
-        JButton ML = new JButton("-");
+        final JButton ML = new JButton("-");
         ML.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event){
 		if (ML.getText().equals("-")){
@@ -81,7 +81,7 @@ public class GridTest extends JFrame {
 		}}
         });
 
-        JButton MC = new JButton("-");
+        final JButton MC = new JButton("-");
         MC.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event){
 		if (MC.getText().equals("-")){
@@ -96,7 +96,8 @@ public class GridTest extends JFrame {
 		    XorO = !XorO;
 		}}
         });
-        JButton MR = new JButton("-");
+
+        final JButton MR = new JButton("-");
         MR.addActionListener(new ActionListener() {	
             public void actionPerformed(ActionEvent event){
 		if (MR.getText().equals("-")){
@@ -112,7 +113,7 @@ public class GridTest extends JFrame {
 		}}
         });
 
-        JButton BL = new JButton("-");
+        final JButton BL = new JButton("-");
         BL.addActionListener(new ActionListener() {
 	     public void actionPerformed(ActionEvent event){
 		if (BL.getText().equals("-")){
@@ -127,7 +128,7 @@ public class GridTest extends JFrame {
 		    XorO = !XorO;
 		}}
         });
-        JButton BC = new JButton("-");
+        final JButton BC = new JButton("-");
         BC.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event){
 		if (BC.getText().equals("-")){
@@ -143,7 +144,7 @@ public class GridTest extends JFrame {
 		}}
         });
 
-        JButton BR = new JButton("-");
+        final JButton BR = new JButton("-");
         BR.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event){
 		if (BR.getText().equals("-")){
@@ -169,6 +170,8 @@ public class GridTest extends JFrame {
         pane1.add(BL);
         pane1.add(BC);
         pane1.add(BR);
+
+	overall.add(pane1, "Regular Tic Tac Toe");
 	    }
 
     public static void main(String[] args){
