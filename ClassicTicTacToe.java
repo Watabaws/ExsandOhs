@@ -8,6 +8,15 @@ public class ClassicTicTacToe extends JFrame {
     //true is x false is o
     private  String[][] valUs= new String[3][3];
     private Container pane1;
+    private JButton UL=new JButton("-");
+    private JButton UC;
+    private JButton UR;
+    private JButton ML;
+    private JButton MC;
+    private JButton MR;
+    private JButton BL;
+    private JButton BC;
+    private JButton BR;
    public static String arrayToString(String[][] a) {
 
     String aString;
@@ -21,7 +30,6 @@ public class ClassicTicTacToe extends JFrame {
         }
 	aString = aString + "\n";}
 
-
     return aString;}
 
     public  void  checkforwinner(String[][]array){
@@ -31,7 +39,6 @@ public class ClassicTicTacToe extends JFrame {
                 gameWon=true;
                 setVisible(false);
     		}
-
     		if(!array[0][i].equals("")&& array[0][i].equals(array[1][i]) && array[0][i].equals(array[2][i])){
     		    System.out.println(array[0][i]+ " won the game!");
     		     gameWon=true;
@@ -50,22 +57,7 @@ public class ClassicTicTacToe extends JFrame {
         }
     }
 
-    public void placeletter(int row, int col, JButton button){
-        if(!gameWon){
-            if (button.getText().equals("-")){
-                if(XorO){
-                    button.setText("X");
-                    valUs[row][col] = "X";
-                }
-            else{
-                button.setText("O");
-                valUs[row][col] = "O";
-		    }
-            XorO = !XorO;
-		    checkforwinner(valUs);
-            }
-        }
-    }
+
 
     public ClassicTicTacToe(){
         gameWon = false;
@@ -82,60 +74,32 @@ public class ClassicTicTacToe extends JFrame {
             }
         }
 
-        JButton UL = new JButton("-");
-        UL.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent event){
-                placeletter(0,0,UL);}
-        });
-
-        JButton UC = new JButton("-");
-        UC.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent event){
-                placeletter(0,1,UC);}
-        });
-
-        JButton UR = new JButton("-");
-        UR.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event){
-                placeletter(0,2,UR);}
-        });
-
-        JButton ML = new JButton("-");
-        ML.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event){
-                placeletter(1,0,ML);}
-        });
-
-        JButton MC = new JButton("-");
-        MC.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event){
-                placeletter(1,1,MC);}
-        });
-
-        JButton MR = new JButton("-");
-        MR.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event){
-                placeletter(1,2,MR);}
-        });
-
-        JButton BL = new JButton("-");
-        BL.addActionListener(new ActionListener() {
-	     public void actionPerformed(ActionEvent event){
-             placeletter(2,0,BL);}
-        });
-
-        JButton BC = new JButton("-");
-        BC.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event){
-                placeletter(2,1,BC);}
-        });
-
-        JButton BR = new JButton("-");
-        BR.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event){
-                placeletter(2,2,BR);}
-        });
-
+        UL.addActionListener(this);
+	UL.setActionCommand("UL");
+        UC = new JButton("-");
+        UC.addActionListener(this);
+	UC.setActionCommand("UC");
+        UR = new JButton("-");
+        UR.addActionListener(this);
+	UR.setActionCommand("UR");
+        ML = new JButton("-");
+        ML.addActionListener(this);
+	ML.setActionCommand("ML");
+        MC = new JButton("-");
+        MC.addActionListener(this);
+	MC.setActionCommand("MC");
+        MR = new JButton("-");
+        MR.addActionListener(this);
+	MR.setActionCommand("MR");
+        BL = new JButton("-");
+        BL.addActionListener(this);
+	BL.setActionCommand("BL");
+        BC = new JButton("-");
+        BC.addActionListener(this);
+	BC.setActionCommand("BC");
+        BR = new JButton("-");
+        BR.addActionListener(this);
+	BR.setActionCommand("BR");
 
         pane1.add(UL);
         pane1.add(UC);
@@ -147,6 +111,43 @@ public class ClassicTicTacToe extends JFrame {
         pane1.add(BC);
         pane1.add(BR);
 	}
+public void actionPerformed(ActionEvent e){
+	    String event=e.getActionCommand;
+	    if(event.equals("UL")){
+		placeletter(0,0,UL);}
+	    if(event.equals("UC")){
+		placeletter(0,1,UC);}
+	    if(event.equals("UR")){
+		placeletter(0,2,UR);}
+	    if(event.equals("ML")){
+		placeletter(1,0,ML);}
+	    if(event.equals("MC")){
+		placeletter(1,1,MC);}
+	    if(event.equals("MR")){
+		placeletter(1,2,MR);}
+	    if(event.equals("BL")){
+		placeletter(2,0,BR);}
+	    if(event.equals("BC")){
+		placeletter(2,1,BC);}
+	    if(event.equals("BR")){
+		placeletter(2,2,BR);}
+}
+public void placeletter(int row, int col, JButton button){
+        if(!gameWon){
+            if (button.getText().equals("-")){
+                if(XorO){
+                    button.setText("X");
+                    valUs[row][col] = "X";
+                }
+            else{
+                button.setText("O");
+                valUs[row][col] = "O";
+		    }
+            XorO = !XorO;
+		    checkforwinner(valUs);
+            }
+        }
+    }
 
     public static void main(String[] args){
         ClassicTicTacToe g = new ClassicTicTacToe();
