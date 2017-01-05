@@ -8,18 +8,55 @@ public class GridTest extends JFrame {
     //true is x false is o
     private  String[][] valUs= new String[3][3];
     private Container pane1;
+   public static String arrayToString(String[][] a) {
+
+    String aString;     
+    aString = "";
+    int column;
+    int row;
+
+    for (row = 0; row < a.length; row++) {
+        for (column = 0; column < a[0].length; column++ ) {
+        aString = aString + " " + a[row][column];
+        }
+	aString = aString + "\n";}
+    
+
+    return aString;}
+   
     public  void  checkforwinner(String[][]array){
 	    for(int i=0; i<array.length;i++){	       
 		if(!array[i][0].equals("")&& array[i][0].equals(array[i][1]) && array[i][0].equals(array[i][2])){
-		    System.out.println(array[i][0]+ "won the game!");
+		    System.out.println(array[i][0]+ " won the game!");
 		     gameWon=true;
 		     
 		}
 		if(!array[0][i].equals("")&& array[0][i].equals(array[1][i]) && array[0][i].equals(array[2][i])){
-		    System.out.println(array[0][i]+ "won the game!");
+		    System.out.println(array[0][i]+ " won the game!");
 		     gameWon=true;
-	   }
-	    }}
+		}}
+		if(!array[0][0].equals("")&& array[0][0].equals(array[1][1]) && array[0][0].equals(array[2][2])){
+		    System.out.println(array[0][0]+ " won the game!");
+		    gameWon=true;}
+		if(!array[0][2].equals("")&& array[0][2].equals(array[1][1]) && array[0][2].equals(array[2][0])){
+		     System.out.println(array[0][2]+ " won the game!");
+		     gameWon=true;
+		}}
+    public void placeletter(int row, int col, JButton button){
+	if(!gameWon){
+	if (button.getText().equals("-")){
+		    if(XorO){
+			button.setText("X");
+			valUs[row][col] = "X";
+		    }
+			    else{
+			button.setText("O");
+			valUs[row][col] = "O";
+		    }
+		    XorO = !XorO;
+		    checkforwinner(valUs);
+	}}}
+
     public GridTest(){
         this.setTitle("Tic Tac Toe");
         this.setSize(1000,1000);
@@ -36,156 +73,55 @@ public class GridTest extends JFrame {
         UL.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent event){
-		if (UL.getText().equals("-")){
-		    if(XorO){
-			UL.setText("X");
-			valUs[0][0] = "X";
-			checkforwinner(valUs);
-		    }
-		    else{
-			UL.setText("O");
-			valUs[0][0] = "O";
-		    }
-		    XorO = !XorO;
-		}}
-	    
-        });
+		placeletter(0,0,UL);}
+	    });
 
         JButton UC = new JButton("-");
         UC.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event){
-		if (UC.getText().equals("-")){
-		    if(XorO){
-			UC.setText("X");
-			valUs[0][1] = "X";
-			checkforwinner(valUs);
-		    }
-		    else{
-			UC.setText("O");
-			valUs[0][1] = "O";
-		    }
-		    XorO = !XorO;
-		}}
+		placeletter(0,1,UC);}
+		
         });
 
         JButton UR = new JButton("-");
         UR.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event){
-		if (UR.getText().equals("-")){
-		    if(XorO){
-			UR.setText("X");
-			valUs[0][2] = "X";
-			checkforwinner(valUs);
-		    }
-		    else{
-			UR.setText("O");
-			valUs[0][2] = "O";
-		    }
-		    XorO = !XorO;
-		}}
-
+		placeletter(0,2,UR);}
         });
 
         JButton ML = new JButton("-");
         ML.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event){
-		if (ML.getText().equals("-")){
-		    if(XorO){
-			ML.setText("X");
-			valUs[1][0] = "X";
-			checkforwinner(valUs);
-		    }
-		    else{
-			ML.setText("O");
-			valUs[1][0] = "O";
-		    }
-		    XorO = !XorO;
-		}}
+		placeletter(1,0,ML);}
         });
 
         JButton MC = new JButton("-");
         MC.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event){
-		if (MC.getText().equals("-")){
-		    if(XorO){
-			MC.setText("X");
-			valUs[1][1] = "X";
-			checkforwinner(valUs);
-		    }
-		    else{
-			MC.setText("O");
-			valUs[1][1] = "O";
-		    }
-		    XorO = !XorO;
-		}}
-		
+		placeletter(1,1,MC);}
+				   
         });
         JButton MR = new JButton("-");
         MR.addActionListener(new ActionListener() {	
             public void actionPerformed(ActionEvent event){
-		if (MR.getText().equals("-")){
-		    if(XorO){
-			MR.setText("X");
-			valUs[1][2] = "X";
-			checkforwinner(valUs);
-		    }
-		    else{
-			MR.setText("O");
-			valUs[1][2] = "O";
-		    }
-		    XorO = !XorO;
-		}}
+		placeletter(1,2,MR);}
         });
 
         JButton BL = new JButton("-");
         BL.addActionListener(new ActionListener() {
 	     public void actionPerformed(ActionEvent event){
-		if (BL.getText().equals("-")){
-		    if(XorO){
-			BL.setText("X");
-			valUs[2][0] = "X";
-			checkforwinner(valUs);
-		    }
-		    else{
-		       BL.setText("O");
-			valUs[2][0] = "O";
-		    }
-		    XorO = !XorO;
-		}}
+		 placeletter(2,0,BL);}
         });
         JButton BC = new JButton("-");
         BC.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event){
-		if (BC.getText().equals("-")){
-		    if(XorO){
-			BC.setText("X");
-			valUs[2][1] = "X";
-			checkforwinner(valUs);
-		    }
-		    else{
-		        BC.setText("O");
-			valUs[2][1] = "O";
-		    }
-		    XorO = !XorO;
-		    
-		}}
+		placeletter(2,1,BC);}
         });
 
         JButton BR = new JButton("-");
         BR.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event){
-		if (BR.getText().equals("-")){
-		    if(XorO){
-			BR.setText("X");
-			valUs[2][2] = "X";
-			checkforwinner(valUs);
-		    }
-		    else{
-			BR.setText("O");
-			valUs[2][2] = "O";
-		    }
-		    XorO = !XorO;
-		}}
+	        placeletter(2,2,BR);}
         });
 
 
@@ -206,4 +142,4 @@ public class GridTest extends JFrame {
     }
 
 
-}
+	    }
