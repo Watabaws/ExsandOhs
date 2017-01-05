@@ -31,7 +31,7 @@ public class XsNOs extends JFrame implements ActionListener{
             og.setVisible(true);
         }
         if(e.getSource() == misere){
-            rg.setVisible(false);
+            rg.setVisible(true);
         }
     }
 

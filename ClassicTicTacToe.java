@@ -29,20 +29,24 @@ public class ClassicTicTacToe extends JFrame {
     		if(!array[i][0].equals("")&& array[i][0].equals(array[i][1]) && array[i][0].equals(array[i][2])){
                 System.out.println(array[i][0]+ " won the game!");
                 gameWon=true;
+                setVisible(false);
     		}
 
     		if(!array[0][i].equals("")&& array[0][i].equals(array[1][i]) && array[0][i].equals(array[2][i])){
     		    System.out.println(array[0][i]+ " won the game!");
     		     gameWon=true;
+                 setVisible(false);
     		}
         }
     	if(!array[0][0].equals("")&& array[0][0].equals(array[1][1]) && array[0][0].equals(array[2][2])){
             System.out.println(array[0][0]+ " won the game!");
             gameWon=true;
+            setVisible(false);
         }
         if(!array[0][2].equals("")&& array[0][2].equals(array[1][1]) && array[0][2].equals(array[2][0])){
             System.out.println(array[0][2]+ " won the game!");
             gameWon=true;
+            setVisible(false);
         }
     }
 
