@@ -2,13 +2,13 @@ import javax.swing.*;
 import java.awt.*;//NEW STUFF!
 import java.awt.event.*;
 import java.util.Arrays;
-public class ClassicTicTacToe extends JFrame {
+public class ClassicTicTacToe extends JFrame implements ActionListener {
     private boolean XorO = true;
     private boolean gameWon= false;
     //true is x false is o
     private  String[][] valUs= new String[3][3];
     private Container pane1;
-    private JButton UL=new JButton("-");
+    private JButton UL;
     private JButton UC;
     private JButton UR;
     private JButton ML;
@@ -61,7 +61,7 @@ public class ClassicTicTacToe extends JFrame {
 
     public ClassicTicTacToe(){
         gameWon = false;
-        
+
         this.setTitle("Tic Tac Toe");
         this.setSize(1000,1000);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -74,32 +74,32 @@ public class ClassicTicTacToe extends JFrame {
             }
         }
 
+        UL = new JButton("-");
         UL.addActionListener(this);
-	UL.setActionCommand("UL");
+
         UC = new JButton("-");
         UC.addActionListener(this);
-	UC.setActionCommand("UC");
+
         UR = new JButton("-");
         UR.addActionListener(this);
-	UR.setActionCommand("UR");
+
         ML = new JButton("-");
         ML.addActionListener(this);
-	ML.setActionCommand("ML");
+
         MC = new JButton("-");
         MC.addActionListener(this);
-	MC.setActionCommand("MC");
+
         MR = new JButton("-");
         MR.addActionListener(this);
-	MR.setActionCommand("MR");
+
         BL = new JButton("-");
         BL.addActionListener(this);
-	BL.setActionCommand("BL");
+
         BC = new JButton("-");
         BC.addActionListener(this);
-	BC.setActionCommand("BC");
+
         BR = new JButton("-");
         BR.addActionListener(this);
-	BR.setActionCommand("BR");
 
         pane1.add(UL);
         pane1.add(UC);
@@ -112,24 +112,23 @@ public class ClassicTicTacToe extends JFrame {
         pane1.add(BR);
 	}
 public void actionPerformed(ActionEvent e){
-	    String event=e.getActionCommand;
-	    if(event.equals("UL")){
+	    if(e.getSource() == UL){
 		placeletter(0,0,UL);}
-	    if(event.equals("UC")){
+	    if(e.getSource() == UC){
 		placeletter(0,1,UC);}
-	    if(event.equals("UR")){
+	    if(e.getSource()  == UR){
 		placeletter(0,2,UR);}
-	    if(event.equals("ML")){
+	    if(e.getSource() == ML){
 		placeletter(1,0,ML);}
-	    if(event.equals("MC")){
+	    if(e.getSource() == MC){
 		placeletter(1,1,MC);}
-	    if(event.equals("MR")){
+	    if(e.getSource() == MR){
 		placeletter(1,2,MR);}
-	    if(event.equals("BL")){
+	    if(e.getSource() == BL){
 		placeletter(2,0,BR);}
-	    if(event.equals("BC")){
+	    if(e.getSource() == BC){
 		placeletter(2,1,BC);}
-	    if(event.equals("BR")){
+	    if(e.getSource() == BR){
 		placeletter(2,2,BR);}
 }
 public void placeletter(int row, int col, JButton button){
