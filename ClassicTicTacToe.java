@@ -68,6 +68,8 @@ public class ClassicTicTacToe extends JFrame {
     }
 
     public ClassicTicTacToe(){
+        gameWon = false;
+        
         this.setTitle("Tic Tac Toe");
         this.setSize(1000,1000);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);

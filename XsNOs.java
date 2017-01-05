@@ -4,8 +4,8 @@ import javax.swing.*;
 
 public class XsNOs extends JFrame implements ActionListener{
     Container c;
-    ClassicTicTacToe og = new ClassicTicTacToe();
-    MisereTicTacToe rg = new MisereTicTacToe();
+    ClassicTicTacToe og;
+    MisereTicTacToe rg;
     JButton misere = new JButton("Misere");
     JButton classic = new JButton("Classic");
 
@@ -28,9 +28,11 @@ public class XsNOs extends JFrame implements ActionListener{
 
     public void actionPerformed(ActionEvent e){
         if(e.getSource() == classic){
+            og = new ClassicTicTacToe();
             og.setVisible(true);
         }
         if(e.getSource() == misere){
+            rg = new MisereTicTacToe();
             rg.setVisible(true);
         }
     }

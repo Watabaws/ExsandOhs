@@ -4,7 +4,7 @@ import java.awt.event.*;
 import java.util.Arrays;
 public class MisereTicTacToe  extends JFrame {
     private boolean XorO = true;
-    private static boolean gameWon= false;
+    private boolean gameWon;
     //true is x false is o
     private  String[][] valUs= new String[3][3];
     private Container pane1;
@@ -99,6 +99,7 @@ public class MisereTicTacToe  extends JFrame {
     }
 
     public MisereTicTacToe(){
+        gameWon = false;
         this.setTitle("Tic Tac Toe");
         this.setSize(1000,1000);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -179,9 +180,5 @@ public class MisereTicTacToe  extends JFrame {
 
     public static void main(String[] args){
         MisereTicTacToe g = new MisereTicTacToe();
-        while(!gameWon){
-            g.setVisible(true);
-        }
-        System.exit(0);
     }
 }
