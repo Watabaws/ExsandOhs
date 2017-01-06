@@ -12,7 +12,7 @@ public class XsNOs extends JFrame implements ActionListener{
     public XsNOs(){
         c = this.getContentPane();
         c.setLayout(new FlowLayout());
-        this.setSize(500,300);
+        this.setSize(200,100);
         this.setTitle("Choose your Tic-Tac-Toe");
 
         classic.addActionListener(this);

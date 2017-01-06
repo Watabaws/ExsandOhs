@@ -23,55 +23,55 @@ public class MisereTicTacToe  extends JFrame {
             }
         }
 
-        JButton UL = new JButton("-");
+        final JButton UL = new JButton("-");
         UL.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent event){
                 placeletter(0,0,UL);}
 	    });
 
-        JButton UC = new JButton("-");
+        final JButton UC = new JButton("-");
         UC.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event){
 		placeletter(0,1,UC);}
 
         });
 
-        JButton UR = new JButton("-");
+        final JButton UR = new JButton("-");
         UR.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event){
 		placeletter(0,2,UR);}
         });
 
-        JButton ML = new JButton("-");
+        final JButton ML = new JButton("-");
         ML.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event){
 		placeletter(1,0,ML);}
         });
 
-        JButton MC = new JButton("-");
+        final JButton MC = new JButton("-");
         MC.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event){
 		placeletter(1,1,MC);}
 
         });
-        JButton MR = new JButton("-");
+        final JButton MR = new JButton("-");
         MR.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event){
 		placeletter(1,2,MR);}
         });
 
-        JButton BL = new JButton("-");
+        final JButton BL = new JButton("-");
         BL.addActionListener(new ActionListener() {
 	     public void actionPerformed(ActionEvent event){
 		 placeletter(2,0,BL);}
         });
-        JButton BC = new JButton("-");
+        final JButton BC = new JButton("-");
         BC.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event){
 		placeletter(2,1,BC);}
         });
 
-        JButton BR = new JButton("-");
+        final JButton BR = new JButton("-");
         BR.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event){
 	        placeletter(2,2,BR);}
