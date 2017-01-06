@@ -15,7 +15,6 @@ public class XsNOs extends JFrame implements ActionListener{
         this.setSize(500,300);
         this.setTitle("Choose your Tic-Tac-Toe");
 
-
         classic.addActionListener(this);
 
         misere.addActionListener(this);

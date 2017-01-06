@@ -8,95 +8,6 @@ public class MisereTicTacToe  extends JFrame {
     //true is x false is o
     private  String[][] valUs= new String[3][3];
     private Container pane1;
-   public static String arrayToString(String[][] a) {
-
-    String aString;
-    aString = "";
-    int column;
-    int row;
-
-    for (row = 0; row < a.length; row++) {
-        for (column = 0; column < a[0].length; column++ ) {
-        aString = aString + " " + a[row][column];
-        }
-	aString = aString + "\n";}
-
-
-    return aString;}
-
-    public  void  checkforwinner(String[][]array){
-	    for(int i=0; i<array.length;i++){
-		if(!array[i][0].equals("")&& array[i][0].equals(array[i][1]) && array[i][0].equals(array[i][2])){
-		    if(array[i][0].equals("O")){
-                System.out.println("X  won the game!");
-                gameWon=true;
-                setVisible(false);
-            }
-		    else{
-			    System.out.println("O  won the game!");
-			    gameWon=true;
-                setVisible(false);
-            }
-		}
-
-		if(!array[0][i].equals("")&& array[0][i].equals(array[1][i]) && array[0][i].equals(array[2][i])){
-		    if(array[0][i].equals("O")){
-                System.out.println("X  won the game!");
-                gameWon=true;
-                setVisible(false);
-            }
-		    else{
-			    System.out.println("O  won the game!");
-			    gameWon=true;
-                setVisible(false);
-            }
-        }
-    }
-		if(!array[0][0].equals("")&& array[0][0].equals(array[1][1]) && array[0][0].equals(array[2][2])){
-		    if(array[0][0].equals("O")){
-                System.out.println("X  won the game!");
-		        gameWon=true;
-                setVisible(false);
-            }
-
-		    else{
-                System.out.println("O  won the game!");
-                gameWon=true;
-                setVisible(false);
-            }
-        }
-
-		if(!array[0][2].equals("")&& array[0][2].equals(array[1][1]) && array[0][2].equals(array[2][0])){
-		    if(array[0][2].equals("O")){
-                System.out.println("X  won the game!");
-                gameWon=true;
-                setVisible(false);
-            }
-		    else{
-                System.out.println("O  won the game!");
-                gameWon=true;
-                setVisible(false);
-            }
-		}
-    }
-
-
-    public void placeletter(int row, int col, JButton button){
-        if(!gameWon){
-            if (button.getText().equals("-")){
-                if(XorO){
-                    button.setText("X");
-                    valUs[row][col] = "X";
-                }
-                else{
-                    button.setText("O");
-                    valUs[row][col] = "O";
-                }
-                XorO = !XorO;
-                checkforwinner(valUs);
-            }
-        }
-    }
 
     public MisereTicTacToe(){
         gameWon = false;
@@ -177,6 +88,81 @@ public class MisereTicTacToe  extends JFrame {
         pane1.add(BC);
         pane1.add(BR);
 	    }
+
+    public  void  checkforwinner(String[][]array){
+	    for(int i=0; i<array.length;i++){
+            if(!array[i][0].equals("")&& array[i][0].equals(array[i][1]) && array[i][0].equals(array[i][2])){
+                if(array[i][0].equals("O")){
+                    System.out.println("X  won the game!");
+                    gameWon=true;
+                    setVisible(false);
+                }
+                else{
+                    System.out.println("O  won the game!");
+                    gameWon=true;
+                    setVisible(false);
+                }
+            }
+            if(!array[0][i].equals("")&& array[0][i].equals(array[1][i]) && array[0][i].equals(array[2][i])){
+                if(array[0][i].equals("O")){
+                    System.out.println("X  won the game!");
+                    gameWon=true;
+                    setVisible(false);
+                }
+                else{
+    			    System.out.println("O  won the game!");
+    			    gameWon=true;
+                    setVisible(false);
+                }
+            }
+        }
+
+        if(!array[0][0].equals("")&& array[0][0].equals(array[1][1]) && array[0][0].equals(array[2][2])){
+            if(array[0][0].equals("O")){
+                System.out.println("X  won the game!");
+                gameWon=true;
+                setVisible(false);
+            }
+		    else{
+                System.out.println("O  won the game!");
+                gameWon=true;
+                setVisible(false);
+            }
+        }
+
+		if(!array[0][2].equals("")&& array[0][2].equals(array[1][1]) && array[0][2].equals(array[2][0])){
+		    if(array[0][2].equals("O")){
+                System.out.println("X  won the game!");
+                gameWon=true;
+                setVisible(false);
+            }
+		    else{
+                System.out.println("O  won the game!");
+                gameWon=true;
+                setVisible(false);
+            }
+		}
+    }
+
+
+    public void placeletter(int row, int col, JButton button){
+        if(!gameWon){
+            if (button.getText().equals("-")){
+                if(XorO){
+                    button.setText("X");
+                    valUs[row][col] = "X";
+                }
+                else{
+                    button.setText("O");
+                    valUs[row][col] = "O";
+                }
+                XorO = !XorO;
+                checkforwinner(valUs);
+            }
+        }
+    }
+
+
 
     public static void main(String[] args){
         MisereTicTacToe g = new MisereTicTacToe();
