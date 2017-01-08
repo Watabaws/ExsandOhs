@@ -3,7 +3,7 @@ import java.awt.*;//NEW STUFF!
 import java.awt.event.*;
 import java.util.Arrays;
 import javax.imageio.ImageIO;
-public class ClassicTicTacToe extends JFrame implements ActionListener {
+public class TicTacToe extends JPanel implements ActionListener {
     private boolean XorO = true;
     private boolean gameWon= false;
     private String winner="";
@@ -12,12 +12,8 @@ public class ClassicTicTacToe extends JFrame implements ActionListener {
     private Container pane1;
     private JButton UL, UC, UR, ML, MC, MR, BL, BC, BR;
 
-    public ClassicTicTacToe(){
+    public TicTacToe(){
         gameWon = false;
-
-        this.setTitle("Tic Tac Toe");
-        this.setSize(1000,1000);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         pane1 = this.getContentPane();
         pane1.setLayout(new GridLayout(3,3));
@@ -171,7 +167,7 @@ public class ClassicTicTacToe extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args){
-        ClassicTicTacToe g = new ClassicTicTacToe();
+        TicTacToe g = new TicTacToe();
         g.setVisible(true);
 
     }
