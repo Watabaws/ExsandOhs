@@ -1,7 +1,8 @@
 import javax.swing.*;
-import java.awt.*;//NEW STUFF!
+import java.awt.*;
 import java.awt.event.*;
 import java.util.Arrays;
+
 public class ClassicTicTacToe extends JFrame implements ActionListener {
     private boolean XorO = true;
     private boolean gameWon= false;
