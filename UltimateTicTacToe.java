@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;//NEW STUFF!
 import java.awt.event.*;
 import java.util.Arrays;
-public class UltimateTicTacToe extends JFrame {
+public class UltimateTicTacToe extends JFrame implements ActionListener{
     private boolean gameWon= false;
     private String winner= "";
     //true is x false is o
@@ -23,11 +23,43 @@ public class UltimateTicTacToe extends JFrame {
 	aString = aString + "\n";}
 
     return aString;}
+    public void createArray(){
+	valUs[0][0]=UL.getWinner();
+	valUs[0][1]=UC.getWinner();
+	valUs[0][2]=UR.getWinner();
+	valUs[1][0]=ML.getWinner();
+	valUs[1][1]=MC.getWinner();
+	valUs[1][2]=MR.getWinner();
+	valUs[2][0]=BL.getWinner();
+	valUs[2][1]=BC.getWinner();
+	valUs[2][2]=BR.getWinner();
+    }
+    public  void  checkforwinner(String[][]array){
+     for(int i=0; i<array.length;i++){
+    		if(!array[i][0].equals("")&& array[i][0].equals(array[i][1]) && array[i][0].equals(array[i][2])){
+		    gameWon=true;
+		    winner=array[i][0];
+    		}
 
-    //public  void  checkforwinner(String[][]array){
-     
+    		if(!array[0][i].equals("")&& array[0][i].equals(array[1][i]) && array[0][i].equals(array[2][i])){
+    		     gameWon=true;
+		     winner=array[0][i];	     
+		}
+	 }
 
-    //}
+    	if(!array[0][0].equals("")&& array[0][0].equals(array[1][1]) && array[0][0].equals(array[2][2])){
+            gameWon=true;
+	    winner=array[0][0];
+	    }
+	    
+        if(!array[0][2].equals("")&& array[0][2].equals(array[1][1]) && array[0][2].equals(array[2][0])){
+	    winner=array[0][2];
+            gameWon=true;
+	}
+	
+    }
+
+  
     public UltimateTicTacToe(){
         gameWon = false;
 
@@ -45,22 +77,31 @@ public class UltimateTicTacToe extends JFrame {
         }
 
         UL = new TicTacToe();
-       
+        UL.addActionListener(this);
+
         UC = new TicTacToe();
-
+	UC.addActionListener(this);
+	
         UR = new TicTacToe();
-
+	UR.addActionListener(this);
+	
         ML = new TicTacToe();
+	ML.addActionListener(this);
 
         MC = new TicTacToe();
+	MC.addActionListener(this);
 
         MR = new TicTacToe();
+	MR.addActionListener(this);
 
         BL = new TicTacToe();
+	BL.addActionListener(this);
 
         BC = new TicTacToe();
+	BC.addActionListener(this);
 
         BR = new TicTacToe();
+	BR.addActionListener(this);
 
 
       
@@ -75,12 +116,11 @@ public class UltimateTicTacToe extends JFrame {
         pane1.add(BL);
         pane1.add(BC);
         pane1.add(BR);
-
+	
     }
-	//public void actionPerformed(ActionEvent e){
-      
-	    
-	//}
+public void actionPerformed(ActionEvent e){
+    createArray();
+    checkforwinner(valUs);}
 
     public static void main(String[] args){
         UltimateTicTacToe g = new UltimateTicTacToe();
