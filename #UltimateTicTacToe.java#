@@ -116,7 +116,6 @@ public class UltimateTicTacToe extends JFrame {
 	while(!gameWon){
 	createArray();
 	checkforwinner(valUs);}
-	System.out.println(arrayToString(valUs));
 
     }
 

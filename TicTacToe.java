@@ -208,6 +208,7 @@ public class TicTacToe extends JPanel implements ActionListener {
         }
     }
     public String getWinner(){
+	System.out.println(winner);
 	return winner;
     }
     public static void main(String[] args){
