@@ -43,12 +43,13 @@ public class MNK extends JFrame implements ActionListener{
         String tis = valUs[row][col];
         int ctr = 1;
         int bakcheck = col-1;
-        while(bakcheck >= 0 && valUs[row][bakcheck-1].equals(tis)){
+        System.out.println(tis);
+        while(bakcheck >= 1 && valUs[row][bakcheck-1].equals(tis)){
             ctr += 1;
             bakcheck--;
         }
         int frntcheck = col+1;
-        while(frntcheck<row && valUs[row][frntcheck+1].equals(tis)){
+        while(frntcheck<rows-1 && valUs[row][frntcheck+1].equals(tis)){
             ctr += 1;
             frntcheck++;
         }
@@ -62,12 +63,12 @@ public class MNK extends JFrame implements ActionListener{
         String tis = valUs[row][col];
         int ctr = 1;
         int bakcheck = row-1;
-        while(bakcheck >= 0 && valUs[bakcheck-1][col].equals(tis)){
+        while(bakcheck >= 1 && valUs[bakcheck-1][col].equals(tis)){
             ctr += 1;
             bakcheck--;
         }
         int frntcheck = col+1;
-        while(frntcheck<row && valUs[frntcheck+1][col].equals(tis)){
+        while(frntcheck<rows-1 && valUs[frntcheck+1][col].equals(tis)){
             ctr += 1;
             frntcheck++;
         }
@@ -83,7 +84,7 @@ public class MNK extends JFrame implements ActionListener{
 	int bakcheckR = row-1;
 	int bakcheckC = col-1;
 
-	while(bakcheckR >= 0 && bakcheckC >= 0 && valUs[bakcheckR-1][bakcheckC-1].equals(tis)){
+	while(bakcheckR >= 1 && bakcheckC >= 1 && valUs[bakcheckR-1][bakcheckC-1].equals(tis)){
 	    ctr += 1;
 	    bakcheckR--;
 	    bakcheckC--;
@@ -91,7 +92,7 @@ public class MNK extends JFrame implements ActionListener{
 
 	int frntcheckR = row + 1;
 	int frntcheckC = col + 1;
-	while(frntcheckR < col && bakcheckC < row && valUs[frntcheckR+1][frntcheckC+1].equals(tis)){
+	while(frntcheckR < columns-1 && bakcheckC < rows-1 && valUs[frntcheckR+1][frntcheckC+1].equals(tis)){
 	    ctr += 1;
 	    frntcheckR++;
 	    frntcheckC++;
@@ -109,7 +110,7 @@ public class MNK extends JFrame implements ActionListener{
     	int bakcheckR = row-1;
     	int bakcheckC = col+1;
 
-    	while(bakcheckR >= 0 && bakcheckC < row  && valUs[bakcheckR-1][bakcheckC+1].equals(tis)){
+    	while(bakcheckR >= 1 && bakcheckC < rows-1  && valUs[bakcheckR-1][bakcheckC+1].equals(tis)){
     	    ctr += 1;
     	    bakcheckR--;
     	    bakcheckC++;
@@ -117,7 +118,7 @@ public class MNK extends JFrame implements ActionListener{
 
     	int frntcheckR = row + 1;
     	int frntcheckC = col - 1;
-    	while(frntcheckR < col && bakcheckC >= 0 && valUs[frntcheckR+1][frntcheckC-1].equals(tis)){
+    	while(frntcheckR < columns-1 && bakcheckC >= 1 && valUs[frntcheckR+1][frntcheckC-1].equals(tis)){
     	    ctr += 1;
     	    frntcheckR++;
     	    frntcheckC--;
@@ -137,36 +138,32 @@ public class MNK extends JFrame implements ActionListener{
 	checkWinDiagonalNeg(valUs, row, col);
     }
 
-    public void placeLetter(int row, int col, JButton button){
+    public void actionPerformed(ActionEvent e){
+        int row = 0, col = 0    ;
+        Object acshunRaw = e.getSource();
+        JButton acshun = (JButton)acshunRaw;
+        for(int i = 0; i < rows; i++){
+            for(int j = 0; j < columns; j++){
+                if(tiles[i][j].equals(acshun)){
+                    row = i;
+                    col = j;
+                }
+            }
+        }
         if(!gameWon){
-            if (button.getText().equals("-")){
+            if (acshun.getText().equals("-")){
                 if(XorO){
-                    button.setText("X");
+                    acshun.setText("X");
                     valUs[row][col] = "X";
                 }
                 else{
-                    button.setText("O");
+                    acshun.setText("O");
                     valUs[row][col] = "O";
                 }
             XorO = !XorO;
             checkforwinner(valUs, row, col);
             }
         }
-    }
-
-    public void actionPerformed(ActionEvent e){
-        int roo = 0, col = 0    ;
-        Object acshunRaw = e.getSource();
-        JButton acshun = (JButton)acshunRaw;
-        for(int i = 0; i < rows; i++){
-            for(int j = 0; j < columns; j++){
-                if(tiles[i][j].equals(acshun)){
-                    roo = i;
-                    col = j;
-                }
-            }
-        }
-        placeLetter(roo, col, acshun);
     }
 
     public static void main(String[] args){

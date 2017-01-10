@@ -2,11 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Arrays;
-<<<<<<< HEAD
-
-=======
 import javax.imageio.ImageIO;
->>>>>>> 421a3eebfd512864e7cdc00bb1dcadd0ec7cf1ad
+
 public class ClassicTicTacToe extends JFrame implements ActionListener {
     private boolean XorO = true;
     private boolean gameWon= false;
@@ -33,7 +30,7 @@ public class ClassicTicTacToe extends JFrame implements ActionListener {
 
         UL = new JButton("-");
         UL.addActionListener(this);
-       
+
 
         UC = new JButton("-");
         UC.addActionListener(this);
@@ -147,7 +144,7 @@ public class ClassicTicTacToe extends JFrame implements ActionListener {
 			Image newimg = img.getScaledInstance(300, 300,  java.awt.Image.SCALE_SMOOTH ) ;
 			Icon icon = new ImageIcon( newimg );
 			button.setIcon(icon);
-			
+
 		    } catch (Exception ex) {
 			System.out.println(ex);
 		    }
@@ -160,7 +157,7 @@ public class ClassicTicTacToe extends JFrame implements ActionListener {
 			Image newimg = img.getScaledInstance(300, 300,  java.awt.Image.SCALE_SMOOTH ) ;
 			Icon icon = new ImageIcon( newimg );
 			button.setIcon(icon);
-			
+
 		    } catch (Exception ex) {
 			System.out.println(ex);
 		    }
@@ -169,7 +166,7 @@ public class ClassicTicTacToe extends JFrame implements ActionListener {
 	    checkforwinner(valUs);
 	    if(gameWon){
 	    System.out.println(winner+ " won the game!");}
-		    
+
             }
         }
     }
