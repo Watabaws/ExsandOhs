@@ -121,7 +121,7 @@ public class ClassicTicTacToe extends JFrame implements ActionListener {
         }
 
 	    if(e.getSource() == BL){
-            placeletter(2,0,BR);
+            placeletter(2,0,BL);
         }
 
 	    if(e.getSource() == BC){
