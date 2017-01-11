@@ -7,6 +7,7 @@ public class TicTacToe extends JPanel implements ActionListener {
     private boolean XorO = true;
     private boolean gameWon= false;
     private String winner="";
+    private boolean isClicked=false;
     //true is x false is o
     private  String[][] valUs= new String[3][3];
     private Container pane1;
@@ -136,6 +137,7 @@ public class TicTacToe extends JPanel implements ActionListener {
 	 
 
     public void actionPerformed(ActionEvent e){
+	isClicked=true;
 	    if(e.getSource() == UL){
             placeletter(0,0,UL);
         }
@@ -203,7 +205,8 @@ public class TicTacToe extends JPanel implements ActionListener {
 		    }
                 }
             XorO = !XorO;
-	    checkforwinner(valUs);   
+	    checkforwinner(valUs);
+	    isClicked=false;
             }
         }
     }
@@ -211,6 +214,12 @@ public class TicTacToe extends JPanel implements ActionListener {
 	System.out.println(winner);
 	return winner;
     }
+    public  boolean getXorO(){
+	return XorO;}
+    public boolean isClicked(){
+	return isClicked;}
+    public void setXorO(boolean input){
+	XorO=input;}
     public static void main(String[] args){
         TicTacToe g = new TicTacToe();
         g.setVisible(true);

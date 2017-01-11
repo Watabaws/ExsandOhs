@@ -5,6 +5,7 @@ import java.util.Arrays;
 public class UltimateTicTacToe extends JFrame {
     private boolean gameWon= false;
     private String winner= "";
+    public boolean XorO=true;
     //true is x false is o
     private  String[][] valUs= new String[3][3];
     private Container pane1;
@@ -34,6 +35,18 @@ public class UltimateTicTacToe extends JFrame {
 	valUs[2][1]=BC.getWinner();
 	valUs[2][2]=BR.getWinner();
     }
+    public void playGame(TicTacToe board){
+	if(board.isClicked()){
+	    XorO=board.getXorO();
+	    UL.setXorO(XorO);
+	    UC.setXorO(XorO);
+	    UR.setXorO(XorO);
+	    ML.setXorO(XorO);
+	    MC.setXorO(XorO);
+	    MR.setXorO(XorO);
+	    BL.setXorO(XorO);
+	    BC.setXorO(XorO);
+	    BR.setXorO(XorO);}}
     public  void  checkforwinner(String[][]array){
      for(int i=0; i<array.length;i++){
     		if(!array[i][0].equals("")&& array[i][0].equals(array[i][1]) && array[i][0].equals(array[i][2])){
@@ -41,7 +54,7 @@ public class UltimateTicTacToe extends JFrame {
 		    winner=array[i][0];
     		}
 
-    		if(!array[0][i].equals("")&& array[0][i].equals(array[1][i]) && array[0][i].equals(array[2][i])){
+     		if(!array[0][i].equals("")&& array[0][i].equals(array[1][i]) && array[0][i].equals(array[2][i])){
     		     gameWon=true;
 		     winner=array[0][i];	     
 		}
@@ -110,13 +123,22 @@ public class UltimateTicTacToe extends JFrame {
         pane1.add(BR);
 	
     }
-    public void isGameWon(){
+    public void isGameWon(UltimateTicTacToe g){
 	//System.out.println(arrayToString(valUs));
-
+	playGame(UL);
+	playGame(UC);
+	playGame(UR);
+	playGame(ML);
+	playGame(MC);
+	playGame(MR);
+	playGame(BL);
+	playGame(BC);
+	playGame(BR);
 	while(!gameWon){
 	createArray();
 	checkforwinner(valUs);}
-	System.out.println(arrayToString(valUs));
+	if(gameWon){
+	    g.setVisible(false);}
 
     }
 
@@ -125,7 +147,9 @@ public class UltimateTicTacToe extends JFrame {
     public static void main(String[] args){
         UltimateTicTacToe g = new UltimateTicTacToe();
         g.setVisible(true);
-	g.isGameWon();}
+	g.isGameWon(g);
+	}
+    
 
 
     
