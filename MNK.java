@@ -22,6 +22,7 @@ public class MNK extends JFrame implements ActionListener{
         inARow = k;
         valUs = new String[m][n];
         tiles = new JButton[m][n];
+
         for(int j = 0; j < m; j++){
             for(int i = 0; i < n; i++){
                 tiles[j][i] = new JButton("-");
@@ -39,107 +40,8 @@ public class MNK extends JFrame implements ActionListener{
         }
     }
 
-    public void checkWinHorizontal(String[][] valUs, int row, int col){
-        String tis = valUs[row][col];
-        int ctr = 1;
-        int bakcheck = col-1;
-        System.out.println(tis);
-        while(bakcheck >= 1 && valUs[row][bakcheck-1].equals(tis)){
-            ctr += 1;
-            bakcheck--;
-        }
-        int frntcheck = col+1;
-        while(frntcheck<rows-1 && valUs[row][frntcheck+1].equals(tis)){
-            ctr += 1;
-            frntcheck++;
-        }
-        if(ctr == inARow){
-            gameWon = true;
-            setVisible(false);
-        }
-    }
-
-    public void checkWinVertical(String[][] valUs,int row,int  col){
-        String tis = valUs[row][col];
-        int ctr = 1;
-        int bakcheck = row-1;
-        while(bakcheck >= 1 && valUs[bakcheck-1][col].equals(tis)){
-            ctr += 1;
-            bakcheck--;
-        }
-        int frntcheck = col+1;
-        while(frntcheck<rows-1 && valUs[frntcheck+1][col].equals(tis)){
-            ctr += 1;
-            frntcheck++;
-        }
-        if(ctr == inARow){
-            gameWon = true;
-            setVisible(false);
-        }
-    }
-
-    public void checkWinDiagonalPos(String[][] valUs, int row, int col){
-	String tis = valUs[row][col];
-	int ctr = 1;
-	int bakcheckR = row-1;
-	int bakcheckC = col-1;
-
-	while(bakcheckR >= 1 && bakcheckC >= 1 && valUs[bakcheckR-1][bakcheckC-1].equals(tis)){
-	    ctr += 1;
-	    bakcheckR--;
-	    bakcheckC--;
-	}
-
-	int frntcheckR = row + 1;
-	int frntcheckC = col + 1;
-	while(frntcheckR < columns-1 && bakcheckC < rows-1 && valUs[frntcheckR+1][frntcheckC+1].equals(tis)){
-	    ctr += 1;
-	    frntcheckR++;
-	    frntcheckC++;
-	}
-
-        if(ctr == inARow){
-            gameWon = true;
-            setVisible(false);
-        }
-    }
-
-    public void checkWinDiagonalNeg(String[][] valUs, int row, int col){
-    	String tis = valUs[row][col];
-    	int ctr = 1;
-    	int bakcheckR = row-1;
-    	int bakcheckC = col+1;
-
-    	while(bakcheckR >= 1 && bakcheckC < rows-1  && valUs[bakcheckR-1][bakcheckC+1].equals(tis)){
-    	    ctr += 1;
-    	    bakcheckR--;
-    	    bakcheckC++;
-    	}
-
-    	int frntcheckR = row + 1;
-    	int frntcheckC = col - 1;
-    	while(frntcheckR < columns-1 && bakcheckC >= 1 && valUs[frntcheckR+1][frntcheckC-1].equals(tis)){
-    	    ctr += 1;
-    	    frntcheckR++;
-    	    frntcheckC--;
-    	}
-
-            if(ctr == inARow){
-                gameWon = true;
-                setVisible(false);
-            }
-    }
-
-
-    public void checkforwinner(String[][] valUs, int row, int col){
-	checkWinHorizontal(valUs, row, col);
-	checkWinVertical(valUs, row, col);
-	checkWinDiagonalPos(valUs, row, col);
-	checkWinDiagonalNeg(valUs, row, col);
-    }
-
     public void actionPerformed(ActionEvent e){
-        int row = 0, col = 0    ;
+        int row = 0, col = 0;
         Object acshunRaw = e.getSource();
         JButton acshun = (JButton)acshunRaw;
         for(int i = 0; i < rows; i++){
@@ -151,20 +53,92 @@ public class MNK extends JFrame implements ActionListener{
             }
         }
         if(!gameWon){
-            if (acshun.getText().equals("-")){
-                if(XorO){
-                    acshun.setText("X");
-                    valUs[row][col] = "X";
-                }
-                else{
-                    acshun.setText("O");
-                    valUs[row][col] = "O";
-                }
+	    if(XorO){
+		acshun.setText("X");
+		valUs[row][col] = "X";
+	    }
+	    else{
+		acshun.setText("O");
+		valUs[row][col] = "O";
+	    }
             XorO = !XorO;
-            checkforwinner(valUs, row, col);
-            }
+            checkforwinner(row, col);
         }
     }
+
+
+    public void checkforwinner(int row, int col){
+	if(checkforhorizontalwin(row, col) || checkforverticalwin(row,col) || checkfordiagonalposwin(row,col) ){};
+    }
+
+    public boolean checkfordiagonalposwin(int row, int col){
+	String sign = valUs[row][col];
+	int aRow = 0;
+
+	for(int check = 0; (row + check < valUs.length) && (col + check < valUs[0].length); check++){
+	    if(valUs[row + check][col + check].equals(sign);
+	}
+	
+
+	int downCtr = row;
+	int backCtr = col;
+    }
+
+    public boolean checkforhorizontalwin(int row, int col){
+	String sign = valUs[row][col];
+	
+	//Check the values to the left of our current
+	int backCtr = col;
+	int aRow = 1;
+	while(bacKCtr > 0 || valUs[row][backCtr-1].equals(sign)){
+	    aRow += 1;
+	    frontCtr--;
+	} 
+
+	//Check the values to the right of our current
+	int frontCtr = col;
+	while(frontCtr < valUs[row].length - 1 || valUs[row][frontCtr + 1].equals(sign)){
+	    aRow += 1;
+	    frontCtr++;
+	}
+
+	//Check if you got a valid row!
+	if(aRow >= inARow){
+	    return true;
+	}
+	else{
+	    return false;
+	}
+    }
+
+    public boolean checkforverticalwin(int row, int col){
+	String sign = valUs[row][col];
+	
+	//Check the values to the left of our current
+	int backCtr = row;
+	int aRow = 1;
+	while(bacKCtr > 0 || valUs[backCtr - 1][col].equals(sign)){
+	    aRow += 1;
+	    backCtr--;
+	} 
+
+	//Check the values to the right of our current
+	int frontCtr = row;
+	while(frontCtr < valUs.length - 1 || valUs[frontCtr + 1][col].equals(sign)){
+	    aRow += 1;
+	    frontCtr++;
+	}
+
+	//Check if you got a valid row!
+	if(aRow >= inARow){
+	    return true;
+	}
+	else{
+	    return false;
+	}
+    }
+
+
 
     public static void main(String[] args){
 	MNK game = new MNK(Integer.parseInt(args[0]),Integer.parseInt(args[1]),Integer.parseInt(args[2]));
