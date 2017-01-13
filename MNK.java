@@ -86,15 +86,14 @@ public class MNK extends JFrame implements ActionListener{
     public boolean checkfordiagonalposwin(int row, int col){
 	String sign = valUs[row][col];
 	int aRow = 0;
+	int check = 0;
 
-	for(int check = 0; (row + check < valUs.length) && (col + check < valUs[0].length); check++){
-	    System.out.println(row + check < valUs.length);
-	    System.out.println(col + check < valUs[0].length);
-	    if(valUs[row + check][col + check].equals(sign)){
-		    aRow += 1;
-		    System.out.println("Ya!\n");
-	    }
-	}
+	while(check < Math.min(valUs.length - 1, valUs[0].length - 1) && valUs[row+check][col+check].equals(sign)){
+	    aRow += 1;
+	    check++;
+	    System.out.println("1match\n");
+	} 
+
 	return aRow >= inARow;   
     }
 
