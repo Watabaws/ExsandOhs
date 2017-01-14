@@ -29,7 +29,7 @@ public class MNK extends JFrame implements ActionListener{
             }
         }
 
-	for(int j = 0; j < m; j++){
+        for(int j = 0; j < m; j++){
             for(int i = 0; i < n; i++){
                 valUs[j][i] = "-";
             }
@@ -58,89 +58,100 @@ public class MNK extends JFrame implements ActionListener{
                 }
             }
         }
+
         if(!gameWon){
-	    if(acshun.getText().equals("-")){
-		    if(XorO){
-			acshun.setText("X");
-			valUs[row][col] = "X";
-		    }
-		    else{
-			acshun.setText("O");
-			valUs[row][col] = "O";
-		    }
-		    XorO = !XorO;
-		    checkforwinner(row, col);
-		}
-	   }
+    	    if(acshun.getText().equals("-")){
+    		    if(XorO){
+    			acshun.setText("X");
+    			valUs[row][col] = "X";
+    		    }
+    		    else{
+    			acshun.setText("O");
+    			valUs[row][col] = "O";
+    		    }
+    		    XorO = !XorO;
+    		    checkforwinner(row, col);
+            }
+        }
     }
 
-
     public void checkforwinner(int row, int col){
-	if(checkforhorizontalwin(row, col) || checkforverticalwin(row,col) || checkfordiagonalposwin(row,col) ){
-	    System.out.println("Winner!");
-	    gameWon = true;
-	    setVisible(false);
-	}
+    	if(checkforhorizontalwin(row, col) || checkforverticalwin(row,col) || checkfordiagonalposwin(row,col) ){
+    	    System.out.println("Winner!");
+    	    gameWon = true;
+    	    setVisible(false);
+    	}
     }
 
     public boolean checkfordiagonalposwin(int row, int col){
-	String sign = valUs[row][col];
-	int aRow = 0;
-	int check = 0;
+    	String sign = valUs[row][col];
+    	int aRow = 0;
+    	int check = 0;
 
-	while(check < Math.min(valUs.length - 1, valUs[0].length - 1) && valUs[row+check][col+check].equals(sign)){
-	    aRow += 1;
-	    check++;
-	    System.out.println("1match\n");
-	} 
+    	while(check < Math.min(valUs.length - 1 - row, valUs[0].length - 1 - col) &&
+              valUs[row+check][col+check].equals(sign)){
+    	    aRow += 1;
+    	    check++;
+    	    System.out.println("1matchu\n");
+            System.out.print(valUs[row+check][col+check] + "u\n");
+    	}
 
-	return aRow >= inARow;   
+        check = 1;
+        while(check > Math.max(0 - row, 0 - col) &&
+              valUs[row-check][col-check].equals(sign)){
+            aRow += 1;
+            check--;
+            System.out.print("1matchd\n");
+            System.out.print(valUs[row-check][col-check] + "d\n");
+        }
+
+    	return aRow >= inARow;
     }
 
     public boolean checkforhorizontalwin(int row, int col){
-	String sign = valUs[row][col];
-	
-	//Check the values to the left of our current
-	int backCtr = col;
-	int aRow = 1;
-	while(backCtr > 0 && valUs[row][backCtr-1].equals(sign)){
-	    aRow += 1;
-	    backCtr--;
-	} 
+    	String sign = valUs[row][col];
 
-	//Check the values to the right of our current
-	int frontCtr = col;
-	while(frontCtr < valUs[row].length - 1 &&  valUs[row][frontCtr + 1].equals(sign)){
-	    aRow += 1;
-	    frontCtr++;
-	}
+    	//Check the values to the left of our current
+    	int backCtr = col;
+    	int aRow = 1;
+    	while(backCtr > 0 && valUs[row][backCtr-1].equals(sign)){
+    	    aRow += 1;
+    	    backCtr--;
+    	}
 
-	//Check if you got a valid row!
+    	//Check the values to the right of our current
+    	int frontCtr = col;
+    	while(frontCtr < valUs[row].length - 1 &&  valUs[row][frontCtr + 1].equals(sign)){
+    	    aRow += 1;
+    	    frontCtr++;
+    	}
 
-	return aRow >= inARow;
+    	//Check if you got a valid row!
+
+    	return aRow >= inARow;
     }
 
     public boolean checkforverticalwin(int row, int col){
-	String sign = valUs[row][col];
-	
-	//Check the values to the left of our current
-	int backCtr = row;
-	int aRow = 1;
-	while(backCtr > 0 && valUs[backCtr - 1][col].equals(sign)){
-	    aRow += 1;
-	    backCtr--;
-	} 
+    	String sign = valUs[row][col];
 
-	//Check the values to the right of our current
-	int frontCtr = row;
-	while(frontCtr < valUs.length - 1 && valUs[frontCtr + 1][col].equals(sign)){
-	    aRow += 1;
-	    frontCtr++;
-	}
+    	//Check the values to the top of our current
+    	int backCtr = row;
+    	int aRow = 1;
+    	while(backCtr > 0 && valUs[backCtr - 1][col].equals(sign)){
+    	    aRow += 1;
+    	    backCtr--;
+    	}
 
-	//Check if you got a valid row!
-	return aRow >= inARow;
-	
+    	//Check the values to the bottom of our current
+    	int frontCtr = row;
+    	while(frontCtr < valUs.length - 1 && valUs[frontCtr+1][col].equals(sign)){
+    	    aRow += 1;
+    	    frontCtr++;
+    	}
+
+    	//Check if you got a valid row!
+    	return aRow >= inARow;
+
     }
 
 
