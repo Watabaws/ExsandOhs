@@ -76,11 +76,39 @@ public class MNK extends JFrame implements ActionListener{
     }
 
     public void checkforwinner(int row, int col){
-    	if(checkforhorizontalwin(row, col) || checkforverticalwin(row,col) || checkfordiagonalposwin(row,col) ){
+    	if(checkforhorizontalwin(row, col) ||
+           checkforverticalwin(row,col) ||
+           checkfordiagonalnegwin(row,col) ||
+           checkfordiagonalposwin(row,col)){
     	    System.out.println("Winner!");
     	    gameWon = true;
     	    setVisible(false);
     	}
+    }
+
+    public boolean checkfordiagonalnegwin(int row, int col){
+    	String sign = valUs[row][col];
+    	int aRow = 0;
+    	int check = 0;
+
+    	while(check < Math.min(valUs.length - 1 - row, valUs[0].length - 1 + col) &&
+              valUs[row+check][col-check].equals(sign)){
+    	    aRow += 1;
+    	    check++;
+    	    System.out.println("1matchu\n");
+            System.out.print(valUs[row+check][col-check] + "u\n");
+    	}
+
+        check = 0;
+        while(check > Math.max(0 - row, 0 + col) &&
+              valUs[row-check][col+check].equals(sign)){
+            aRow += 1;
+            check--;
+            System.out.print("1matchd\n");
+            System.out.print(valUs[row+check][col+check] + "d\n");
+        }
+
+    	return aRow >= inARow;
     }
 
     public boolean checkfordiagonalposwin(int row, int col){
@@ -96,7 +124,7 @@ public class MNK extends JFrame implements ActionListener{
             System.out.print(valUs[row+check][col+check] + "u\n");
     	}
 
-        check = 1;
+        check = 0;
         while(check > Math.max(0 - row, 0 - col) &&
               valUs[row-check][col-check].equals(sign)){
             aRow += 1;
