@@ -7,7 +7,7 @@ public class XsNOs extends JFrame implements ActionListener{
     ClassicTicTacToe og;
     MisereTicTacToe rg;
     UltimateTicTacToe ug;
-    MNK mg;
+    MNKGUI mg;
     JButton misere = new JButton("Misere");
     JButton classic = new JButton("Classic");
     JButton ultimate = new JButton("Ultimate");
@@ -48,20 +48,20 @@ public class XsNOs extends JFrame implements ActionListener{
             ug.setVisible(true);
         }
         if(e.getSource() == mnk){
-            mg = new MNK(m, n, k);
+            mg = new MNKGUI();
             mg.setVisible(true);
         }
     }
 
     public static void main(String[] args){
-        if(args.length == 3){
+        /*if(args.length == 3){
             m = Integer.parseInt(args[0]);
             n = Integer.parseInt(args[1]);
             k = Integer.parseInt(args[2]);
         }
         else{
             System.out.println("You did not input any values for m, n, or k. be advised that MNK tic tac toe will not work.");
-        }
+        }*/
         XsNOs game = new XsNOs();
         game.setVisible(true);
     }
