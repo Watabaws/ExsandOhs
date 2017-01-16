@@ -3,6 +3,22 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.Arrays;
 import javax.imageio.ImageIO;
+import java.awt.Dimension;
+import java.awt.EventQueue;
+import java.awt.Image;
+import java.awt.Insets;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
 
 public class MNK extends JFrame implements ActionListener{
     private JButton[][] tiles;
@@ -67,7 +83,8 @@ public class MNK extends JFrame implements ActionListener{
     			valUs[row][col] = "X";
 			try {
 			Image img = ImageIO.read(getClass().getResource("x.jpg"));
-			Image newimg = img.getScaledInstance(300, 300,  java.awt.Image.SCALE_SMOOTH ) ;
+		        Dimension size = acshun.getSize();			
+			Image newimg = img.getScaledInstance(size.width,size.height,  java.awt.Image.SCALE_SMOOTH ) ;
 			Icon icon = new ImageIcon( newimg );
 			acshun.setIcon(icon);
 			
@@ -79,17 +96,18 @@ public class MNK extends JFrame implements ActionListener{
     			acshun.setText("O");
     			valUs[row][col] = "O";
 			try{Image img = ImageIO.read(getClass().getResource("o.jpg"));
-			Image newimg = img.getScaledInstance(300, 300,  java.awt.Image.SCALE_SMOOTH ) ;
+		        Dimension size = acshun.getSize();
+			Image newimg = img.getScaledInstance(size.width, size.height,  java.awt.Image.SCALE_SMOOTH ) ;
 			Icon icon = new ImageIcon( newimg );
 			acshun.setIcon(icon);}
 			
 		     catch (Exception ex) {
 			System.out.println(ex);
-		    }
+		     }}
 	    
     		    XorO = !XorO;
     		    checkforwinner(row, col);
-		    }
+		    
 	    }
 	}
     }
