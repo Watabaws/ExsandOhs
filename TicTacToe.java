@@ -3,17 +3,18 @@ import java.awt.*;//NEW STUFF!
 import java.awt.event.*;
 import java.util.Arrays;
 import javax.imageio.ImageIO;
+
 public class TicTacToe extends JPanel implements ActionListener {
-    private boolean XorO = true;
+    private boolean XorO;
     private boolean gameWon= false;
-    private String winner="";
-    private boolean isClicked=false;
+    String winner="";
+    public boolean isClicked = false;
     //true is x false is o
     private  String[][] valUs= new String[3][3];
     private Container pane1;
     private JButton UL, UC, UR, ML, MC, MR, BL, BC, BR;
     private JLabel pic =new JLabel();
-    
+
     public TicTacToe(){
         gameWon = false;
         pane1 = this;
@@ -26,7 +27,7 @@ public class TicTacToe extends JPanel implements ActionListener {
 
         UL = new JButton("-");
         UL.addActionListener(this);
-       
+
 
         UC = new JButton("-");
         UC.addActionListener(this);
@@ -62,6 +63,7 @@ public class TicTacToe extends JPanel implements ActionListener {
         pane1.add(BC);
         pane1.add(BR);
     }
+
     public void changeImage(String winner){
 	  UL.setIcon(null);
 	  UC.setIcon(null);
@@ -81,29 +83,37 @@ public class TicTacToe extends JPanel implements ActionListener {
 	  BL.setVisible(false);
 	  BC.setVisible(false);
 	  BR.setVisible(false);
+
 	if(winner.equals("X")){
-		
+
 		try {
 			Image img = ImageIO.read(getClass().getResource("x.jpg"));
 			Image newimg = img.getScaledInstance(300, 300,  java.awt.Image.SCALE_SMOOTH ) ;
 			Icon icon = new ImageIcon( newimg );
 			pic.setIcon(icon);
-			
+
 		    } catch (Exception ex) {
 			System.out.println(ex);
-		}}
-		else{
-		    try {
-			Image img = ImageIO.read(getClass().getResource("o.jpg"));
-			Image newimg = img.getScaledInstance(300, 300,  java.awt.Image.SCALE_SMOOTH ) ;
-			Icon icon = new ImageIcon( newimg );
-			pic.setIcon(icon);
-			
-		    } catch (Exception ex) {
-			System.out.println(ex);
-		    }}
+		}
+    }
+	else{
+	    try {
+		Image img = ImageIO.read(getClass().getResource("o.jpg"));
+		Image newimg = img.getScaledInstance(pic.getWidth(), pic.getHeight(),  java.awt.Image.SCALE_SMOOTH ) ;
+		Icon icon = new ImageIcon( newimg );
+		pic.setIcon(icon);
+
+	    } catch (Exception ex) {
+		System.out.println(ex);
+	    }
+    }
+
+    pane1 = new Container();
+    pane1 = this;
+
 	pane1.add(pic);
     }
+
     public void checkforwinner(String[][]array){
 	 for(int i=0; i<array.length;i++){
     		if(!array[i][0].equals("")&& array[i][0].equals(array[i][1]) && array[i][0].equals(array[i][2])){
@@ -116,7 +126,7 @@ public class TicTacToe extends JPanel implements ActionListener {
     		     gameWon=true;
 		     winner=array[0][i];
 		     changeImage(winner);
-		     
+
 		}
 	 }
 
@@ -124,7 +134,7 @@ public class TicTacToe extends JPanel implements ActionListener {
             gameWon=true;
 	    winner=array[0][0];
 	    changeImage(winner);}
-	    
+
         if(!array[0][2].equals("")&& array[0][2].equals(array[1][1]) && array[0][2].equals(array[2][0])){
 	    winner=array[0][2];
             gameWon=true;
@@ -132,9 +142,9 @@ public class TicTacToe extends JPanel implements ActionListener {
 	}
     }
 
-		    
-	    
-	 
+
+
+
 
     public void actionPerformed(ActionEvent e){
 	isClicked=true;
@@ -186,7 +196,7 @@ public class TicTacToe extends JPanel implements ActionListener {
 			Image newimg = img.getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH ) ;
 			Icon icon = new ImageIcon( newimg );
 			button.setIcon(icon);
-			
+
 		    } catch (Exception ex) {
 			System.out.println(ex);
 		    }
@@ -199,14 +209,13 @@ public class TicTacToe extends JPanel implements ActionListener {
 			Image newimg = img.getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH ) ;
 			Icon icon = new ImageIcon( newimg );
 			button.setIcon(icon);
-			
+
 		    } catch (Exception ex) {
 			System.out.println(ex);
 		    }
                 }
             XorO = !XorO;
 	    checkforwinner(valUs);
-	    isClicked=false;
             }
         }
     }
@@ -214,16 +223,26 @@ public class TicTacToe extends JPanel implements ActionListener {
 	System.out.println(winner);
 	return winner;
     }
+
     public  boolean getXorO(){
-	return XorO;}
+	       return XorO;
+    }
+
     public boolean isClicked(){
-	return isClicked;}
+	       return isClicked;
+    }
+    public void setIsClicked(boolean newVal){
+        isClicked = newVal;
+    }
+
     public void setXorO(boolean input){
-	XorO=input;}
+	       XorO=input;
+    }
+
     public static void main(String[] args){
         TicTacToe g = new TicTacToe();
         g.setVisible(true);
 
     }
-    
+
 }
