@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Arrays;
+import javax.imageio.ImageIO;
 
 public class MNK extends JFrame implements ActionListener{
     private JButton[][] tiles;
@@ -64,15 +65,33 @@ public class MNK extends JFrame implements ActionListener{
     		    if(XorO){
     			acshun.setText("X");
     			valUs[row][col] = "X";
+			try {
+			Image img = ImageIO.read(getClass().getResource("x.jpg"));
+			Image newimg = img.getScaledInstance(300, 300,  java.awt.Image.SCALE_SMOOTH ) ;
+			Icon icon = new ImageIcon( newimg );
+			acshun.setIcon(icon);
+			
+		    } catch (Exception ex) {
+			System.out.println(ex);
+			}
     		    }
     		    else{
     			acshun.setText("O");
     			valUs[row][col] = "O";
-    		    }
+			try{Image img = ImageIO.read(getClass().getResource("o.jpg"));
+			Image newimg = img.getScaledInstance(300, 300,  java.awt.Image.SCALE_SMOOTH ) ;
+			Icon icon = new ImageIcon( newimg );
+			acshun.setIcon(icon);}
+			
+		     catch (Exception ex) {
+			System.out.println(ex);
+		    }
+	    
     		    XorO = !XorO;
     		    checkforwinner(row, col);
-            }
-        }
+		    }
+	    }
+	}
     }
 
     public void checkforwinner(int row, int col){
@@ -89,51 +108,62 @@ public class MNK extends JFrame implements ActionListener{
     public boolean checkfordiagonalnegwin(int row, int col){
     	String sign = valUs[row][col];
     	int aRow = 0;
-    	int check = 0;
+    	int check1 = 0;
+	int check2=0;
 
-    	while(check < Math.min(valUs.length - 1 - row, valUs[0].length - 1 + col) &&
-              valUs[row+check][col-check].equals(sign)){
-    	    aRow += 1;
-    	    check++;
-    	    System.out.println("1matchu\n");
-            System.out.print(valUs[row+check][col-check] + "u\n");
+    	while(check1 <= Math.min(valUs.length - 1 - row, valUs[0].length - 1 + col) &&
+              valUs[row+check1][col-check1].equals(sign)){
+    	    aRow += 1; 
+    	    check1++;
+    	    //System.out.println("1matchu\n");
+            //System.out.print(valUs[row+check1][col-check1] + "u\n");
+	    
     	}
 
-        check = 0;
-        while(check > Math.max(0 - row, 0 + col) &&
-              valUs[row-check][col+check].equals(sign)){
+  
+        while(check2 <= Math.max(0 - row, 0 + col) &&
+              valUs[row-check2][col+check2].equals(sign)){
             aRow += 1;
-            check--;
-            System.out.print("1matchd\n");
-            System.out.print(valUs[row+check][col+check] + "d\n");
+            check2++;
+            //System.out.print("1matchd\n");
+	    // System.out.print(valUs[row+check2][col+check2] + "d\n");
         }
 
-    	return aRow >= inARow;
+    	return aRow-1 >= inARow;
     }
 
     public boolean checkfordiagonalposwin(int row, int col){
     	String sign = valUs[row][col];
     	int aRow = 0;
-    	int check = 0;
+    	int check1 = 0 ;
+	int check2=0;
+	    
 
-    	while(check < Math.min(valUs.length - 1 - row, valUs[0].length - 1 - col) &&
-              valUs[row+check][col+check].equals(sign)){
+    	while(check1 <=  Math.min(valUs.length - 1 - row, valUs[0].length - 1 - col) &&
+              valUs[row+check1][col+check1].equals(sign)){
     	    aRow += 1;
-    	    check++;
-    	    System.out.println("1matchu\n");
-            System.out.print(valUs[row+check][col+check] + "u\n");
+    	    check1++;
+    	    //System.out.println("1matchu\n");
+	    // System.out.print(valUs[row+check1][col+check1] + "u\n");
     	}
-
-        check = 0;
-        while(check > Math.max(0 - row, 0 - col) &&
-              valUs[row-check][col-check].equals(sign)){
+	
+        while(check2 <= Math.max(row, col) &&
+              valUs[row-check2][col-check2].equals(sign)){
             aRow += 1;
-            check--;
-            System.out.print("1matchd\n");
-            System.out.print(valUs[row-check][col-check] + "d\n");
+            check2++;
+            //System.out.print("1matchd\n");
+	    // System.out.print(valUs[row-check2][col-check2] + "d\n");
         }
-
-    	return aRow >= inARow;
+	//System.out.println(aRow);
+	//	System.out.println(check1 + "hi");
+	//System.out.println(check2+"hey");
+	//System.out.println(valUs.length - 1 - row);
+	//System.out.println(valUs[0].length - 1 - col);
+	//System.out.println(valUs[row+check1][col+check1]);
+	//System.out.println(valUs[row+check1][col+check1].equals(sign));
+	//System.out.println( valUs[row-check2][col-check2].equals(sign));
+	
+    	return aRow-1>= inARow;
     }
 
     public boolean checkforhorizontalwin(int row, int col){
