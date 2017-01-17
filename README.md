@@ -15,7 +15,7 @@ This is the Final Project for Adam Abbas and Inbar Pe'er, Period 10. Our goal wa
 <p style = "color:blue;"> A slightly different take on the classic. When a letter gets 3 in a row, the OTHER person gets a win! It's a simple difference, but adds a completely different strategy to the game. </p>
 
 <li><h3> Ultimate Tic Tac Toe </h3> </li>
-<p style="color:blue;"> Also known as TicTacToeception. Ultimate Tic Tac Toe involves us making a TicTacToe class (3x3 GridLayout) and then adding that to a bigger class (also a 3x3 GridLayout). The classes share the XorO variable, which determines whether the next click is an X or an O. Once a victory is had on an individual board, the pane is modified to change from a TicTacToe() to an icon of the winning letter, where is then evaluated as a regular TicTacToe game. </p>
+<p> Also known as TicTacToeception. Ultimate Tic Tac Toe involves us making a TicTacToe class (3x3 GridLayout) and then adding that to a bigger class (also a 3x3 GridLayout). The classes share the XorO variable, which determines whether the next click is an X or an O. Once a victory is had on an individual board, the pane is modified to change from a TicTacToe() to an icon of the winning letter, where is then evaluated as a regular TicTacToe game. NOTE: This code uses threads, to infinitely run a loop to check all of the TicTacToes. Stopping a thread is considered dangerous/outdated so when our code is compiled something that looks like an error message appears. It should be ignored!</p>
 
 <li><h3> MNK Tic Tac Toe </h3></li>
-<font color="blue"><p> The craziest Tic Tac Toe we have!
+<p> The craziest Tic Tac Toe we have! MNK Tic Tac Toe involves a pregame window, where the user selects m and n, the dimensions of the board and k -- the amount they need to get in a row.
