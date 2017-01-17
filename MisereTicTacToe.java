@@ -9,7 +9,7 @@ public class MisereTicTacToe  extends JFrame {
     //true is x false is o
     private  String[][] valUs= new String[3][3];
     private Container pane1;
-    private String winner;
+    private String winner = "";
 
     public MisereTicTacToe(){
         gameWon = false;
@@ -148,12 +148,12 @@ public class MisereTicTacToe  extends JFrame {
 		    if(array[0][2].equals("O")){
                 System.out.println("X  won the game!");
                 gameWon=true;
-                setVisible(false);
+                winner = "X";
             }
 		    else{
                 System.out.println("O  won the game!");
                 gameWon=true;
-                setVisible(false);
+                winner = "O";
             }
 		}
     }
