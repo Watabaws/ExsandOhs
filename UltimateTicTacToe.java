@@ -4,7 +4,7 @@ import java.awt.event.*;
 import java.util.Arrays;
 import javax.imageio.ImageIO;
 
-public class UltimateTicTacToe extends JFrame {
+public class UltimateTicTacToe extends JFrame implements ActionListener {
   private boolean gameWon= false;
   private String winner= "";
   public boolean XorO = true;
@@ -12,21 +12,10 @@ public class UltimateTicTacToe extends JFrame {
   private  String[][] valUs= new String[3][3];
   private Container pane1;
   private TicTacToe UL, UC, UR, ML, MC, MR, BL, BC, BR;
+  private JButton endGame;
   TicTacToe[] buttons;
 
- public static String arrayToString(String[][] a) {
-      String aString;
-      aString = "";
-      int column;
-      int row;
-      for (row = 0; row < a.length; row++) {
-          for (column = 0; column < a[0].length; column++ ) {
-          aString = aString + " " + a[row][column];
-          }
-      aString = aString + "\n";}
 
-      return aString;
-  }
 
   public boolean getXorO(){
          return XorO;
@@ -70,7 +59,7 @@ public class UltimateTicTacToe extends JFrame {
           if(!array[0][i].equals("")&& array[0][i].equals(array[1][i]) && array[0][i].equals(array[2][i])){
                gameWon=true;
            winner=array[0][i];
-      }
+	  }
    }
 
       if(!array[0][0].equals("")&& array[0][0].equals(array[1][1]) && array[0][0].equals(array[2][2])){
@@ -96,7 +85,7 @@ public class UltimateTicTacToe extends JFrame {
       this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
       pane1 = this.getContentPane();
-      pane1.setLayout(new GridLayout(3,3));
+      pane1.setLayout(new GridLayout(4,3));
       for(int i=0; i<valUs.length;i++){
           for(int x=0; x<valUs[i].length;x++){
               valUs[i][x]="";
@@ -121,7 +110,10 @@ public class UltimateTicTacToe extends JFrame {
       BC = new TicTacToe();
 
       BR = new TicTacToe();
-
+      
+      endGame = new JButton("End Game");
+      endGame.addActionListener(this);
+      
       TicTacToe[] buttonsT =  {UL, UC, UR, ML, MC, MR, BL, BC, BR};
 
       buttons = buttonsT;
@@ -138,10 +130,17 @@ public class UltimateTicTacToe extends JFrame {
       pane1.add(BL);
       pane1.add(BC);
       pane1.add(BR);
+      pane1.add(endGame);
 
       //checkSigns();
 
   }
+    public void gameEnd(UltimateTicTacToe x){
+	x.setVisible(false);}
+    public void actionPerformed(ActionEvent e){
+	if(e.getSource()==endGame){
+	    gameEnd(this);}
+    }
 
   public void checkSigns(){
       while(true){

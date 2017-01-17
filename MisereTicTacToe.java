@@ -3,97 +3,74 @@ import java.awt.*;//NEW STUFF!
 import java.awt.event.*;
 import java.util.Arrays;
 import javax.imageio.ImageIO;
-public class MisereTicTacToe  extends JFrame {
+
+public class MisereTicTacToe  extends JFrame implements ActionListener {
     private boolean XorO = true;
     private boolean gameWon;
     //true is x false is o
     private  String[][] valUs= new String[3][3];
     private Container pane1;
     private String winner = "";
+    private JButton UL, UC, UR, ML, MC, MR, BL, BC, BR, gameEnd;
 
     public MisereTicTacToe(){
         gameWon = false;
+
         this.setTitle("Tic Tac Toe");
         this.setSize(1000,1000);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         pane1 = this.getContentPane();
-        pane1.setLayout(new GridLayout(3,3));
+        pane1.setLayout(new GridLayout(4,3));
         for(int i=0; i<valUs.length;i++){
             for(int x=0; x<valUs[i].length;x++){
                 valUs[i][x]="";
             }
         }
+	gameEnd=new JButton("End Game");
+	gameEnd.addActionListener(this);
+	    
+        UL = new JButton("-");
+        UL.addActionListener(this);
 
-        final JButton UL = new JButton("-");
-        UL.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent event){
-                placeletter(0,0,UL);}
-	    });
 
-        final JButton UC = new JButton("-");
-        UC.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event){
-		placeletter(0,1,UC);}
+        UC = new JButton("-");
+        UC.addActionListener(this);
 
-        });
+        UR = new JButton("-");
+        UR.addActionListener(this);
 
-        final JButton UR = new JButton("-");
-        UR.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event){
-		placeletter(0,2,UR);}
-        });
+        ML = new JButton("-");
+        ML.addActionListener(this);
 
-        final JButton ML = new JButton("-");
-        ML.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event){
-		placeletter(1,0,ML);}
-        });
+        MC = new JButton("-");
+        MC.addActionListener(this);
+	
+        MR = new JButton("-");
+        MR.addActionListener(this);
 
-        final JButton MC = new JButton("-");
-        MC.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event){
-		placeletter(1,1,MC);}
+        BL = new JButton("-");
+        BL.addActionListener(this);
 
-        });
-        final JButton MR = new JButton("-");
-        MR.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event){
-		placeletter(1,2,MR);}
-        });
+        BC = new JButton("-");
+        BC.addActionListener(this);
 
-        final JButton BL = new JButton("-");
-        BL.addActionListener(new ActionListener() {
-	     public void actionPerformed(ActionEvent event){
-		 placeletter(2,0,BL);}
-        });
-        final JButton BC = new JButton("-");
-        BC.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event){
-		placeletter(2,1,BC);}
-        });
-
-        final JButton BR = new JButton("-");
-        BR.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event){
-	        placeletter(2,2,BR);}
-        });
-
+        BR = new JButton("-");
+        BR.addActionListener(this);
 
         pane1.add(UL);
         pane1.add(UC);
         pane1.add(UR);
-        pane1.add(ML);
+	pane1.add(ML);
         pane1.add(MC);
         pane1.add(MR);
         pane1.add(BL);
         pane1.add(BC);
         pane1.add(BR);
-	    }
+	pane1.add(gameEnd);
+    }
 
-        public boolean getGW(){
-            return gameWon;
-        }
+        
 
         public String getWinner(){
             return winner;
@@ -102,6 +79,8 @@ public class MisereTicTacToe  extends JFrame {
         public void setGW(boolean gw){
             gameWon = gw;
         }
+    public void endGame(MisereTicTacToe x){
+	x.setVisible(false);}
 
     public  void  checkforwinner(String[][]array){
 	    for(int i=0; i<array.length;i++){
@@ -159,6 +138,46 @@ public class MisereTicTacToe  extends JFrame {
     }
 
 
+    public void actionPerformed(ActionEvent e){
+	if(e.getSource()==gameEnd){
+	    endGame(this);}
+	    
+	    if(e.getSource() == UL){
+            placeletter(0,0,UL);
+        }
+
+	    if(e.getSource() == UC){
+            placeletter(0,1,UC);
+        }
+
+	    if(e.getSource()  == UR){
+            placeletter(0,2,UR);
+        }
+
+	    if(e.getSource() == ML){
+            placeletter(1,0,ML);
+        }
+
+	    if(e.getSource() == MC){
+            placeletter(1,1,MC);
+        }
+
+	    if(e.getSource() == MR){
+            placeletter(1,2,MR);
+        }
+
+	    if(e.getSource() == BL){
+            placeletter(2,0,BL);
+        }
+
+	    if(e.getSource() == BC){
+            placeletter(2,1,BC);
+        }
+
+	    if(e.getSource() == BR){
+            placeletter(2,2,BR);
+        }
+    }
     public void placeletter(int row, int col, JButton button){
         if(!gameWon){
             if (button.getText().equals("-")){

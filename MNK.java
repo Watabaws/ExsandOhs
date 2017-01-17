@@ -28,6 +28,7 @@ public class MNK extends JFrame implements ActionListener{
     private Container pane1;
     int rows, columns, inARow;
     private String winner;
+    private JButton endGame;
 
     public MNK(int m,int n,int k){
         this.setTitle("MNK Tic Tac Toe");
@@ -54,7 +55,7 @@ public class MNK extends JFrame implements ActionListener{
         }
 
         pane1 = this.getContentPane();
-        pane1.setLayout(new GridLayout(rows, columns));
+        pane1.setLayout(new GridLayout(rows+1, columns));
 
         for(int i = 0; i < rows; i++){
             for(int j = 0; j < columns; j++){
@@ -62,6 +63,9 @@ public class MNK extends JFrame implements ActionListener{
                 pane1.add(tiles[i][j]);
             }
         }
+	endGame= new JButton("End Game");
+	endGame.addActionListener(this);
+	pane1.add(endGame);
     }
 
     public void actionPerformed(ActionEvent e){
@@ -75,6 +79,8 @@ public class MNK extends JFrame implements ActionListener{
                     col = j;
                 }
             }
+	    if(e.getSource()== endGame){
+		gameEnd(this);}
         }
 
         if(!gameWon){
@@ -112,7 +118,9 @@ public class MNK extends JFrame implements ActionListener{
 	    }
 	}
     }
-
+    public void  gameEnd(MNK x){
+	x.setVisible(false);}
+    
     public void checkforwinner(int row, int col){
     	if(checkforhorizontalwin(row, col) ||
            checkforverticalwin(row,col) ||

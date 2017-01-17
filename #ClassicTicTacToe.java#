@@ -63,7 +63,7 @@ public class ClassicTicTacToe extends JFrame implements ActionListener {
         pane1.add(UL);
         pane1.add(UC);
         pane1.add(UR);
-       pane1.add(ML);
+	pane1.add(ML);
         pane1.add(MC);
         pane1.add(MR);
         pane1.add(BL);
