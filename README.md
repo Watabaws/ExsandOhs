@@ -21,5 +21,30 @@ This is the Final Project for Adam Abbas and Inbar Pe'er, Period 10. Our goal wa
 <p> The craziest Tic Tac Toe we have! MNK Tic Tac Toe involves a pregame window, where the user selects m and n, the dimensions of the board and k -- the amount they need to get in a row. A game is then generated with the correct dimensions and played like a super large (or super small if you’re into that!) Tic Tac Toe game! Definitely not for beginners either, this game will test your Tic Tac Toe skills to the limit. </p>
 
 </ul>
+<h2> Unresolved Bugs (ew)</h2>
+<p>We did a lot of debugging the day the project was due and now we don’t feel as though there are glaring bugs. If there are bugs (lets face it most code does!) then we are not aware of them unfortunately. I guess the biggest unresolved aspect of the project is the changing of the images doesn’t work through the GUI, only through the terminal. </p>
 
-<h2> Working Things/Stuff You Should Test! </h2>
+<h2> Compilation Directions </h2>
+<p>
+You will need to compile a the following files:</p>
+<ul>
+<li>XsNOs.java</li>
+<li>MisereTicTacToe.java</li>
+<li>ClassicTicTacToe.java</li>
+<li>MNK.java</li>
+<li>MNKGUI.java</li>
+<li>TicTacToe.java</li>
+<li>UltimateTicTacToe.java</li>
+*When you compile UltimateTicTacToe it will give you an error because we used some “dangerous” code, please ignore it! It runs fine!*
+</ul>
+
+<h2> Playing the Game </h2>
+<p>Run XsNOs!
+Select your choice of the different TicTacToe games by pressing on the buttons.<br>
+If you are playing MNK then enter in your M N and K values in the window that pops up! (Make sure your K value is less than your M and N values otherwise an error message will pop up and you will not be able to proceed)<br>
+Keep playing and watch the score change as you win(or lose) the different tic tac toe games!<br>
+If you want to spice things up you can run ClassicTicTacToe independently in the terminal with two parameters. These two parameters should be the names of images that you have put in the same ExsandOhs directory. (Not sure why you would do this though, our faces our beautiful)<p>
+
+
+
+
