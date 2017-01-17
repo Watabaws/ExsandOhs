@@ -16,3 +16,6 @@ This is the Final Project for Adam Abbas and Inbar Pe'er, Period 10. Our goal wa
 
 <li><h3> Ultimate Tic Tac Toe </h3> </li>
 <p style="color:blue;"> Also known as TicTacToeception. Ultimate Tic Tac Toe involves us making a TicTacToe class (3x3 GridLayout) and then adding that to a bigger class (also a 3x3 GridLayout). The classes share the XorO variable, which determines whether the next click is an X or an O. Once a victory is had on an individual board, the pane is modified to change from a TicTacToe() to an icon of the winning letter, where is then evaluated as a regular TicTacToe game. </p>
+
+<li><h3> MNK Tic Tac Toe </h3></li>
+<font color="blue"><p> The craziest Tic Tac Toe we have!
