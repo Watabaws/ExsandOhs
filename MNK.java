@@ -27,6 +27,7 @@ public class MNK extends JFrame implements ActionListener{
     private boolean XorO = true;
     private Container pane1;
     int rows, columns, inARow;
+    private String winner;
 
     public MNK(int m,int n,int k){
         this.setTitle("MNK Tic Tac Toe");
@@ -83,11 +84,11 @@ public class MNK extends JFrame implements ActionListener{
     			valUs[row][col] = "X";
 			try {
 			Image img = ImageIO.read(getClass().getResource("x.jpg"));
-		        Dimension size = acshun.getSize();			
+		        Dimension size = acshun.getSize();
 			Image newimg = img.getScaledInstance(size.width,size.height,  java.awt.Image.SCALE_SMOOTH ) ;
 			Icon icon = new ImageIcon( newimg );
 			acshun.setIcon(icon);
-			
+
 		    } catch (Exception ex) {
 			System.out.println(ex);
 			}
@@ -100,14 +101,14 @@ public class MNK extends JFrame implements ActionListener{
 			Image newimg = img.getScaledInstance(size.width, size.height,  java.awt.Image.SCALE_SMOOTH ) ;
 			Icon icon = new ImageIcon( newimg );
 			acshun.setIcon(icon);}
-			
+
 		     catch (Exception ex) {
 			System.out.println(ex);
 		     }}
-	    
+
     		    XorO = !XorO;
     		    checkforwinner(row, col);
-		    
+
 	    }
 	}
     }
@@ -119,9 +120,22 @@ public class MNK extends JFrame implements ActionListener{
            checkfordiagonalposwin(row,col)){
     	    System.out.println("Winner!");
     	    gameWon = true;
-    	    setVisible(false);
     	}
     }
+
+    public boolean getGW(){
+        return gameWon;
+    }
+
+    public String getWinner(){
+        return winner;
+    }
+
+    public void setGW(boolean gw){
+        gameWon = gw;
+    }
+
+
 
     public boolean checkfordiagonalnegwin(int row, int col){
     	String sign = valUs[row][col];
@@ -131,14 +145,14 @@ public class MNK extends JFrame implements ActionListener{
 
     	while(check1 <= Math.min(valUs.length - 1 - row, valUs[0].length - 1 + col) &&
               valUs[row+check1][col-check1].equals(sign)){
-    	    aRow += 1; 
+    	    aRow += 1;
     	    check1++;
     	    //System.out.println("1matchu\n");
             //System.out.print(valUs[row+check1][col-check1] + "u\n");
-	    
+
     	}
 
-  
+
         while(check2 <= Math.max(0 - row, 0 + col) &&
               valUs[row-check2][col+check2].equals(sign)){
             aRow += 1;
@@ -147,6 +161,9 @@ public class MNK extends JFrame implements ActionListener{
 	    // System.out.print(valUs[row+check2][col+check2] + "d\n");
         }
 
+        if(aRow-1 >= inARow){
+            winner = sign;
+        }
     	return aRow-1 >= inARow;
     }
 
@@ -154,8 +171,8 @@ public class MNK extends JFrame implements ActionListener{
     	String sign = valUs[row][col];
     	int aRow = 0;
     	int check1 = 0 ;
-	int check2=0;
-	    
+	    int check2=0;
+
 
     	while(check1 <=  Math.min(valUs.length - 1 - row, valUs[0].length - 1 - col) &&
               valUs[row+check1][col+check1].equals(sign)){
@@ -164,7 +181,7 @@ public class MNK extends JFrame implements ActionListener{
     	    //System.out.println("1matchu\n");
 	    // System.out.print(valUs[row+check1][col+check1] + "u\n");
     	}
-	
+
         while(check2 <= Math.max(row, col) &&
               valUs[row-check2][col-check2].equals(sign)){
             aRow += 1;
@@ -180,7 +197,12 @@ public class MNK extends JFrame implements ActionListener{
 	//System.out.println(valUs[row+check1][col+check1]);
 	//System.out.println(valUs[row+check1][col+check1].equals(sign));
 	//System.out.println( valUs[row-check2][col-check2].equals(sign));
-	
+
+
+        if(aRow-1 >= inARow){
+            winner = sign;
+        }
+
     	return aRow-1>= inARow;
     }
 
@@ -204,6 +226,10 @@ public class MNK extends JFrame implements ActionListener{
 
     	//Check if you got a valid row!
 
+        if(aRow >= inARow){
+            winner = sign;
+        }
+
     	return aRow >= inARow;
     }
 
@@ -226,6 +252,10 @@ public class MNK extends JFrame implements ActionListener{
     	}
 
     	//Check if you got a valid row!
+
+        if(aRow >= inARow){
+            winner = sign;
+        }
     	return aRow >= inARow;
 
     }

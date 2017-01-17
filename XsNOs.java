@@ -4,21 +4,23 @@ import javax.swing.*;
 
 public class XsNOs extends JFrame implements ActionListener{
     Container c;
-    ClassicTicTacToe og;
-    MisereTicTacToe rg;
-    UltimateTicTacToe ug;
-    MNKGUI mg;
+    ClassicTicTacToe og = new ClassicTicTacToe();
+    MisereTicTacToe rg = new MisereTicTacToe();
+    UltimateTicTacToe ug = new UltimateTicTacToe();
+    MNK mg = new MNK(3,3,3);
+    MNKGUI mgi;
     JButton misere = new JButton("Misere");
     JButton classic = new JButton("Classic");
     JButton ultimate = new JButton("Ultimate");
     JButton mnk = new JButton("MNK Tic-Tac-Toe");
-
-    static int m, n, k;
+    int xScore = 0, oScore = 0;
+    JLabel Ex, Oh;
+    Thread thread;
 
     public XsNOs(){
         c = this.getContentPane();
-        c.setLayout(new FlowLayout());
-        this.setSize(500,350);
+        c.setLayout(new GridLayout(2,2));
+        this.setSize(700,350);
         this.setTitle("Choose your Tic-Tac-Toe");
 
         classic.addActionListener(this);
@@ -31,7 +33,65 @@ public class XsNOs extends JFrame implements ActionListener{
         c.add(ultimate);
         c.add(mnk);
 
+        Ex = new JLabel("" + xScore);
+        Oh = new JLabel("" + oScore);
+        JLabel Xlab = new JLabel("X Score: ");
+        JLabel Olab = new JLabel("O Score: ");
+
+        c.add(Xlab);
+        c.add(Ex);
+        c.add(Olab);
+        c.add(Oh);
         c.setVisible(true);
+    }
+
+    public void updateScores(){
+        while(true){
+            if(og.getGW()){
+                if(og.getWinner().equals("X")){
+                    xScore++;
+                }
+                else{
+                    oScore++;
+                }
+                og.setGW(false);
+                og.setVisible(false);
+            }
+
+            if(rg.getGW()){
+                if(rg.getWinner().equals("X")){
+                    xScore++;
+                }
+                else{
+                    oScore++;
+                }
+                rg.setGW(false);
+                rg.setVisible(false);
+            }
+            if(ug.getGW()){
+                if(ug.getWinner().equals("X")){
+                    xScore++;
+                }
+                else{
+                    oScore++;
+                }
+                ug.setGW(false);
+                ug.setVisible(false);
+                thread.stop();
+            }
+            if(mg.getGW()){
+                if(mg.getWinner().equals("X")){
+                    xScore++;
+                }
+                else{
+                    oScore++;
+                }
+                mg.setGW(false);
+                mg.setVisible(false);
+            }
+            Ex.setText("" + xScore);
+            Oh.setText("" + oScore);
+        }
     }
 
     public void actionPerformed(ActionEvent e){
@@ -46,10 +106,22 @@ public class XsNOs extends JFrame implements ActionListener{
         if(e.getSource() == ultimate){
             ug = new UltimateTicTacToe();
             ug.setVisible(true);
+            thread = new Thread(new Runnable() {
+                public void run() {
+                    ug.checkSigns();
+                }
+            });
+            thread.start();
         }
         if(e.getSource() == mnk){
-            mg = new MNKGUI();
+            mgi = new MNKGUI();
+            mgi.setVisible(true);
+            while(mgi.getGM() == false){
+
+            }
+            mg = mgi.getGame();
             mg.setVisible(true);
+
         }
     }
 
@@ -64,5 +136,6 @@ public class XsNOs extends JFrame implements ActionListener{
         }*/
         XsNOs game = new XsNOs();
         game.setVisible(true);
+        game.updateScores();
     }
 }

@@ -67,31 +67,39 @@ public class ClassicTicTacToe extends JFrame implements ActionListener {
         pane1.add(BR);
     }
 
+    public String getWinner(){
+        return winner;
+    }
+
+    public void setGW(boolean gw){
+        gameWon = gw;
+    }
+
+    public boolean getGW(){
+        return gameWon;
+    }
+
     public  void  checkforwinner(String[][]array){
 	    for(int i=0; i<array.length;i++){
     		if(!array[i][0].equals("")&& array[i][0].equals(array[i][1]) && array[i][0].equals(array[i][2])){
                 gameWon=true;
 		winner=array[i][0];
-                setVisible(false);
     		}
 
     		if(!array[0][i].equals("")&& array[0][i].equals(array[1][i]) && array[0][i].equals(array[2][i])){
     		     gameWon=true;
 		     winner=array[0][i];
-                 setVisible(false);
     		}
         }
 
     	if(!array[0][0].equals("")&& array[0][0].equals(array[1][1]) && array[0][0].equals(array[2][2])){
             gameWon=true;
 	    winner=array[0][0];
-            setVisible(false);
         }
 
         if(!array[0][2].equals("")&& array[0][2].equals(array[1][1]) && array[0][2].equals(array[2][0])){
 	    winner=array[0][2];
             gameWon=true;
-            setVisible(false);
         }
     }
 
@@ -153,23 +161,22 @@ public class ClassicTicTacToe extends JFrame implements ActionListener {
                     button.setText("O");
                     valUs[row][col] = "O";
 		    try {
-			Image img = ImageIO.read(getClass().getResource("o.jpg"));
-			Image newimg = img.getScaledInstance(300, 300,  java.awt.Image.SCALE_SMOOTH ) ;
-			Icon icon = new ImageIcon( newimg );
-			button.setIcon(icon);
+        		Image img = ImageIO.read(getClass().getResource("o.jpg"));
+        		Image newimg = img.getScaledInstance(300, 300,  java.awt.Image.SCALE_SMOOTH ) ;
+        		Icon icon = new ImageIcon( newimg );
+        		button.setIcon(icon);
 
-		    } catch (Exception ex) {
-			System.out.println(ex);
-		    }
-                }
-            XorO = !XorO;
-	    checkforwinner(valUs);
-	    if(gameWon){
-	    System.out.println(winner+ " won the game!");}
-
+        	    } catch (Exception ex) {
+        		System.out.println(ex);
+        	    }
+                    }
+                XorO = !XorO;
+            checkforwinner(valUs);
             }
         }
     }
+
+
 
     public static void main(String[] args){
         ClassicTicTacToe g = new ClassicTicTacToe();

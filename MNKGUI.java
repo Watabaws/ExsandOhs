@@ -7,6 +7,7 @@ public class MNKGUI extends JFrame implements ActionListener{
     JTextField m, n, k;
     JButton submit;
     MNK game;
+    boolean gameMade = false;
 
     public MNKGUI(){
         pane = this.getContentPane();
@@ -35,6 +36,14 @@ public class MNKGUI extends JFrame implements ActionListener{
         kay = Integer.parseInt(k.getText());
         game = new MNK(em, en, kay);
         setVisible(false);
-        game.setVisible(true);
+        gameMade = true;
+    }
+
+    public MNK getGame(){
+        return game;
+    }
+
+    public boolean getGM(){
+        return gameMade;
     }
 }

@@ -9,6 +9,7 @@ public class MisereTicTacToe  extends JFrame {
     //true is x false is o
     private  String[][] valUs= new String[3][3];
     private Container pane1;
+    private String winner;
 
     public MisereTicTacToe(){
         gameWon = false;
@@ -90,30 +91,42 @@ public class MisereTicTacToe  extends JFrame {
         pane1.add(BR);
 	    }
 
+        public boolean getGW(){
+            return gameWon;
+        }
+
+        public String getWinner(){
+            return winner;
+        }
+
+        public void setGW(boolean gw){
+            gameWon = gw;
+        }
+
     public  void  checkforwinner(String[][]array){
 	    for(int i=0; i<array.length;i++){
             if(!array[i][0].equals("")&& array[i][0].equals(array[i][1]) && array[i][0].equals(array[i][2])){
                 if(array[i][0].equals("O")){
                     System.out.println("X  won the game!");
                     gameWon=true;
-                    setVisible(false);
+                    winner = "X";
                 }
                 else{
                     System.out.println("O  won the game!");
                     gameWon=true;
-                    setVisible(false);
+                    winner = "O";
                 }
             }
             if(!array[0][i].equals("")&& array[0][i].equals(array[1][i]) && array[0][i].equals(array[2][i])){
                 if(array[0][i].equals("O")){
                     System.out.println("X  won the game!");
                     gameWon=true;
-                    setVisible(false);
+                    winner = "X";
                 }
                 else{
     			    System.out.println("O  won the game!");
     			    gameWon=true;
-                    setVisible(false);
+                    winner = "O";
                 }
             }
         }
@@ -122,12 +135,12 @@ public class MisereTicTacToe  extends JFrame {
             if(array[0][0].equals("O")){
                 System.out.println("X  won the game!");
                 gameWon=true;
-                setVisible(false);
+                winner = "X";
             }
 		    else{
                 System.out.println("O  won the game!");
                 gameWon=true;
-                setVisible(false);
+                winner = "O";
             }
         }
 
@@ -157,7 +170,7 @@ public class MisereTicTacToe  extends JFrame {
 			Image newimg = img.getScaledInstance(300, 300,  java.awt.Image.SCALE_SMOOTH ) ;
 			Icon icon = new ImageIcon( newimg );
 			button.setIcon(icon);
-			
+
 		    } catch (Exception ex) {
 			System.out.println(ex);
 		    }
@@ -169,7 +182,7 @@ public class MisereTicTacToe  extends JFrame {
 			Image newimg = img.getScaledInstance(300, 300,  java.awt.Image.SCALE_SMOOTH ) ;
 			Icon icon = new ImageIcon( newimg );
 			button.setIcon(icon);
-			
+
 		    } catch (Exception ex) {
 			System.out.println(ex);
 		    }
