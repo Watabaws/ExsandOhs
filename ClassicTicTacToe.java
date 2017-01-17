@@ -7,15 +7,72 @@ import javax.imageio.ImageIO;
 public class ClassicTicTacToe extends JFrame implements ActionListener {
     private boolean XorO = true;
     private boolean gameWon= false;
+      private String Ximg;
+    private String Oimg;
     private String winner="";
     //true is x false is o
     private  String[][] valUs= new String[3][3];
     private Container pane1;
     private JButton UL, UC, UR, ML, MC, MR, BL, BC, BR;
+ public ClassicTicTacToe(String ximg, String oimg){
+	Ximg=ximg;
+	Oimg=oimg;
+	gameWon = false;
 
+        this.setTitle("Tic Tac Toe");
+        this.setSize(1000,1000);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        pane1 = this.getContentPane();
+        pane1.setLayout(new GridLayout(3,3));
+        for(int i=0; i<valUs.length;i++){
+            for(int x=0; x<valUs[i].length;x++){
+                valUs[i][x]="";
+            }
+        }
+
+        UL = new JButton("-");
+        UL.addActionListener(this);
+
+
+        UC = new JButton("-");
+        UC.addActionListener(this);
+
+        UR = new JButton("-");
+        UR.addActionListener(this);
+
+        ML = new JButton("-");
+        ML.addActionListener(this);
+
+        MC = new JButton("-");
+        MC.addActionListener(this);
+        MR = new JButton("-");
+        MR.addActionListener(this);
+
+        BL = new JButton("-");
+        BL.addActionListener(this);
+
+        BC = new JButton("-");
+        BC.addActionListener(this);
+
+        BR = new JButton("-");
+        BR.addActionListener(this);
+
+        pane1.add(UL);
+        pane1.add(UC);
+        pane1.add(UR);
+       pane1.add(ML);
+        pane1.add(MC);
+        pane1.add(MR);
+        pane1.add(BL);
+        pane1.add(BC);
+        pane1.add(BR);
+    }
     public ClassicTicTacToe(){
         gameWon = false;
-
+	Ximg="x.jpg";
+	Oimg="o.jpg";
+	    
         this.setTitle("Tic Tac Toe");
         this.setSize(1000,1000);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -148,7 +205,7 @@ public class ClassicTicTacToe extends JFrame implements ActionListener {
                     button.setText("X");
                     valUs[row][col] = "X";
 		    try {
-			Image img = ImageIO.read(getClass().getResource("x.jpg"));
+			Image img = ImageIO.read(getClass().getResource(Ximg));
 			Image newimg = img.getScaledInstance(300, 300,  java.awt.Image.SCALE_SMOOTH ) ;
 			Icon icon = new ImageIcon( newimg );
 			button.setIcon(icon);
@@ -161,7 +218,7 @@ public class ClassicTicTacToe extends JFrame implements ActionListener {
                     button.setText("O");
                     valUs[row][col] = "O";
 		    try {
-        		Image img = ImageIO.read(getClass().getResource("o.jpg"));
+        		Image img = ImageIO.read(getClass().getResource(Oimg));
         		Image newimg = img.getScaledInstance(300, 300,  java.awt.Image.SCALE_SMOOTH ) ;
         		Icon icon = new ImageIcon( newimg );
         		button.setIcon(icon);
@@ -178,9 +235,16 @@ public class ClassicTicTacToe extends JFrame implements ActionListener {
 
 
 
+
+		    
     public static void main(String[] args){
-        ClassicTicTacToe g = new ClassicTicTacToe();
-        g.setVisible(true);
+	if (args.length>0){
+		ClassicTicTacToe g = new ClassicTicTacToe(args[0],args[1]);
+	        g.setVisible(true);
+}
+	else{
+	    ClassicTicTacToe m = new ClassicTicTacToe();
+	    m.setVisible(true);}
 
     }
 }
