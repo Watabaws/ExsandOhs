@@ -11,7 +11,7 @@ public class MNKGUI extends JFrame implements ActionListener{
 
     public MNKGUI(){
         pane = this.getContentPane();
-        pane.setLayout(new GridLayout(0,4));
+        pane.setLayout(new GridLayout(1,4));
         this.setSize(300,100);
         this.setTitle("Enter the values for MNK");
 
@@ -35,7 +35,6 @@ public class MNKGUI extends JFrame implements ActionListener{
         en = Integer.parseInt(n.getText());
         kay = Integer.parseInt(k.getText());
         game = new MNK(em, en, kay);
-        setVisible(false);
         gameMade = true;
     }
 
@@ -45,5 +44,9 @@ public class MNKGUI extends JFrame implements ActionListener{
 
     public boolean getGM(){
         return gameMade;
+    }
+
+    public void setGM(boolean nv){
+        gameMade = nv;
     }
 }

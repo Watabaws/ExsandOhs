@@ -8,7 +8,7 @@ public class XsNOs extends JFrame implements ActionListener{
     MisereTicTacToe rg = new MisereTicTacToe();
     UltimateTicTacToe ug = new UltimateTicTacToe();
     MNK mg = new MNK(3,3,3);
-    MNKGUI mgi;
+    MNKGUI mgi = new MNKGUI();
     JButton misere = new JButton("Misere");
     JButton classic = new JButton("Classic");
     JButton ultimate = new JButton("Ultimate");
@@ -91,6 +91,12 @@ public class XsNOs extends JFrame implements ActionListener{
             }
             Ex.setText("" + xScore);
             Oh.setText("" + oScore);
+            if(mgi.gameMade){
+                mg = mgi.getGame();
+                mg.setVisible(true);
+                mgi.setGM(false);
+                mgi.setVisible(false);
+            }
         }
     }
 
@@ -116,11 +122,9 @@ public class XsNOs extends JFrame implements ActionListener{
         if(e.getSource() == mnk){
             mgi = new MNKGUI();
             mgi.setVisible(true);
-            while(mgi.getGM() == false){
-
-            }
-            mg = mgi.getGame();
-            mg.setVisible(true);
+            //while(mgi.getGM() == false){}
+            //mg = mgi.getGame();
+            //mg.setVisible(true);
 
         }
     }

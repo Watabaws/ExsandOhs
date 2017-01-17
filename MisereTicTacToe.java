@@ -29,7 +29,7 @@ public class MisereTicTacToe  extends JFrame implements ActionListener {
         }
 	gameEnd=new JButton("End Game");
 	gameEnd.addActionListener(this);
-	    
+
         UL = new JButton("-");
         UL.addActionListener(this);
 
@@ -45,7 +45,7 @@ public class MisereTicTacToe  extends JFrame implements ActionListener {
 
         MC = new JButton("-");
         MC.addActionListener(this);
-	
+
         MR = new JButton("-");
         MR.addActionListener(this);
 
@@ -70,7 +70,7 @@ public class MisereTicTacToe  extends JFrame implements ActionListener {
 	pane1.add(gameEnd);
     }
 
-        
+
 
         public String getWinner(){
             return winner;
@@ -79,6 +79,11 @@ public class MisereTicTacToe  extends JFrame implements ActionListener {
         public void setGW(boolean gw){
             gameWon = gw;
         }
+
+        public boolean getGW(){
+            return gameWon;
+        }
+
     public void endGame(MisereTicTacToe x){
 	x.setVisible(false);}
 
@@ -141,7 +146,7 @@ public class MisereTicTacToe  extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e){
 	if(e.getSource()==gameEnd){
 	    endGame(this);}
-	    
+
 	    if(e.getSource() == UL){
             placeletter(0,0,UL);
         }
